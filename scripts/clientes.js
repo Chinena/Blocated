@@ -80,23 +80,24 @@ function validarFormulario() {
 
         // Cambiar el estilo del campo con error
         //...
-        console.log("Mal: " + elemento.value);
-        elemento.style.border = '2px solid red';
-        //elemento.classList.add('error-pulsating');
+        //elemento.style.border = '2px solid red';
+        elemento.classList.add('error-email');
 
         contieneError = true; // Indicar que hay errores
 
-        setTimeout(() => {
-          // Restaurar el estilo del campo después del retraso
-          elemento.style.border = '';
-        }, 2000);
+        setTimeout((function (elemento) {
+          return function () {
+            // Restaurar el estilo del campo y quitar la clase de animación después del retraso
+            elemento.style.border = '';
+            elemento.classList.remove('error-email');
+            elemento.classList.add('puff');
+          }
+        })(elemento), 2000);
 
       } else {
-        console.log("Bien: " + elemento.value);
         // Restaurar el estilo del campo si no hay error
         elemento.style.border = '';
-        //elemento.classList.remove('error-pulsating');
-
+        elemento.classList.remove('error-email');
       }
     }
 
@@ -145,6 +146,7 @@ function validarFormulario() {
 
 // 
 function continueAction() {
+  // ESTE ES EL FUNCIONAL
   showPopup({
     title: 'Registro Exitoso',
     content: 'El cliente se ha registrado exitosamente.',
@@ -163,6 +165,71 @@ function continueAction() {
     // Recarga la página después de enviar el formulario
     //window.location.reload();
   }, 2000); // 2000 milisegundos = 2 segundos
+  
+  //Pasarlo como AJAX?
+  /*
+    var razonSocialHidden = document.getElementById("razon_social_hidden").value;
+    var contactoHidden = document.getElementById("contacto_hidden").value;
+
+  var parametros = {
+    "guardar": "1",
+    "razon_social": $('#razon_social').val(),
+    "rfc": $('#rfc').val(),
+    "email_factura": $('#email_factura').val(),
+    "tel_Oficina": $('#tel_Oficina').val(),
+    "domicilio": $('#domicilio').val(),
+    "contacto": $('#contacto').val(),
+    "email_conctanto": $('#email_contacto').val(),
+    "tel_Contacto": $('#tel_Contacto').val(),
+    "activo": $('#activeCheckbox').is(':checked') ? 1 : 0,  // Valor del checkbox
+    "pago": $('#pago').val(),  // Valor del select de Modalidad Pago
+    "plan": $('#plan').val(),   // Valor del select de Plan
+
+    "razon_social_hidden": razonSocialHidden,
+    "contacto_hidden": contactoHidden
+  };
+
+  $.ajax({
+    data: parametros,
+    dataType: 'json',
+    url: 'scripts/bd_clientes.php',
+    type: 'post',
+
+    beforeSend: function () {
+      //$('#respuesta').html("");
+      //$('#formulario').hide();
+      //$('#cargando').show();
+      console.log('Antes de enviar...');
+    },
+    error: function () {
+      console.log('Ocurrió un error...');
+    },
+    complete: function () {
+      // Mostrar formulario y ocultar spinner después de la llamada AJAX
+      //$('#cargando').hide();
+      //$('#formulario').show();
+      setTimeout(function () {
+        // Envía el formulario al archivo PHP si todas las validaciones son exitosas
+        //document.getElementById('agregarCliente').submit();
+    
+        // Cierra el popup después de enviar el formulario
+        closePopup();
+    
+        // Recarga la página después de enviar el formulario
+        //window.location.reload();
+      }, 1000);
+    },
+    success: function (respuesta) {
+      if (respuesta.success) {
+        // Éxito, hacer algo si es necesario
+        console.log(respuesta.message);
+      } else {
+        // Error, mostrar mensaje de error
+        console.error(respuesta.message);
+      }
+    }
+  });*/
+
 }
 
 // Función para resaltar los campos con errores
@@ -276,7 +343,7 @@ document.getElementById('boton_limpiar').addEventListener('click', function () {
 }*/
 
 /*
-//ESTOS SON PARA PRUEBAS ES PARA PRUEBAS*/
+//ESTOS SON PARA PRUEBAS ES PARA PRUEBAS
 var clientes;
 
 function buscar() {
@@ -345,7 +412,7 @@ $(document).on('click', '.resultado-cliente', function () {
 
   // Cerrar el contenedor de resultados
   $('#respuesta').html("");
-});
+});*/
 
 
 /*function buscar() {

@@ -109,9 +109,14 @@
 }
 
 .puff {
-    border: '';
+    /*border: '';*/
     transition: border-color 1s ease-out; /* Ajusta la duración y la función de temporización según tus preferencias */
-  }
+}
+
+.error-email {
+  border: 2px solid red;
+  animation: pulsate 1s ease-in-out 2;
+}
 
   
 
