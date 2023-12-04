@@ -63,9 +63,41 @@ function validarFormulario() {
       }
     }
 
-    // Convertir el valor a mayúsculas, excepto para los campos de correo electrónico
+
+    //Respetar mayusculas y minusculas para email
     if (!elemento.name.includes('email')) {
       elemento.value = elemento.value.toUpperCase();
+    } else {
+      // Restriccion de contener "@ y .com" o "@ y .mx"
+      const emailRestriccion = /@.*\.(com|mx)$/;
+      if (!emailRestriccion.test(elemento.value)) {
+        showPopup({
+          title: 'Error de validación',
+          content: 'Verifique que su cuenta de correo sea correcto.',
+          showContinueButton: false,
+          showCancelButton: true
+        });
+
+        // Cambiar el estilo del campo con error
+        //...
+        console.log("Mal: " + elemento.value);
+        elemento.style.border = '2px solid red';
+        //elemento.classList.add('error-pulsating');
+
+        contieneError = true; // Indicar que hay errores
+
+        setTimeout(() => {
+          // Restaurar el estilo del campo después del retraso
+          elemento.style.border = '';
+        }, 2000);
+
+      } else {
+        console.log("Bien: " + elemento.value);
+        // Restaurar el estilo del campo si no hay error
+        elemento.style.border = '';
+        //elemento.classList.remove('error-pulsating');
+
+      }
     }
 
     // Verificar si el campo es un campo de teléfono y si su valor no es numérico
@@ -82,7 +114,7 @@ function validarFormulario() {
       elemento.classList.add('error-pulsating');
 
       contieneError = true; // Indicar que hay errores
-      resaltarCamposConError(); // Llamar a la función para resaltar campos
+      //resaltarCamposConError(); // Llamar a la función para resaltar campos
 
       // Programar una reversión de estilos después de un breve retraso (por ejemplo, 1 segundo)
       setTimeout((function (elemento) {
@@ -100,6 +132,7 @@ function validarFormulario() {
     }
 
   }
+
   // Si hay errores, no enviar el formulario
   if (contieneError) {
     return false;

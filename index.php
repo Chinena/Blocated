@@ -23,7 +23,7 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
   
   <title>Blocated</title>
   
-  <!-- Utilizar AJAX de forma Online -->
+  <!-- Utilizar AJAX y jQuery de forma Online -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
