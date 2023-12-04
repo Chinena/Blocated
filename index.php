@@ -1,5 +1,5 @@
 <?php
-
+//inicio
 include ('config.php'); // Incluye el archivo de conexión
 include ('scripts/inicio.php'); // Incluye el archivo de consulta
 //require_once('scripts/funciones.php'); //Para confirmar que no entre a la pagina sin haber iniciado sesion
