@@ -1,5 +1,5 @@
 <?php
-//inicio
+
 include ('config.php'); // Incluye el archivo de conexión
 include ('scripts/inicio.php'); // Incluye el archivo de consulta
 //require_once('scripts/funciones.php'); //Para confirmar que no entre a la pagina sin haber iniciado sesion
@@ -23,7 +23,7 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
   
   <title>Blocated</title>
   
-  <!-- Utilizar AJAX y jQuery de forma Online -->
+  <!-- Utilizar AJAX de forma Online -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
@@ -228,48 +228,48 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
   </section>
 
     <!-- Recargas -->
-  <section id="recargas">
-    <br>
-    <h1>Sección Recargas</h1>
+    <section id="recargas">
+            <br>
+            <h1>Sección Recargas</h1>
 
-    <div class="row">
-      <div class="col-2"></div>
-      <div class="col-8">
-        <div class="text-over-box">
-          <a>Nombre del Equipo</a>
-          <input type="text" id="equipo" />
-          <button class="submit-button" onclick="buscarEquipo()">Buscar</button>
-        </div>
-      </div>
-      <div class="col-2"></div>
-    </div>
+            <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="text-over-box">
+                <a>Nombre del Equipo</a>
+                <input type="text" id="equipo" />
+                <button class="submit-button" onclick="buscarEquipo()">Buscar</button>
+                </div>
+            </div>
+            <div class="col-2"></div>
+            </div>
 
-    <div class="row">
-      <div class="col-3" style="margin-left: 170px;">
-        <div class="text-over-box">
-          <a>Chip</a>
-          <input type="text" id="simNumber" value="" readonly disabled />
-        </div>
-        <div class="text-over-box">
-          <a>Activo</a>
-          <input type="text" id="active" value="" readonly disabled />
-        </div>
-      </div>
-      <div class="col-2"></div>
-      <div class="col-3">
-        <div class="text-over-box">
-          <a>Fecha de Recarga</a>
-          <input type="date" id="fechaRecarga" value="" style="color: grey; text-align: center;" readonly disabled />
-        </div>
-        <div class="text-over-box">
-          <a>Fecha de Caducidad</a>
-          <input type="date" id="fechaCaducado" value="" style="color: grey; text-align: center;" readonly disabled />
-        </div>
-      </div>
-    </div>
-   
-  </section>
+            <div class="row">
+            <div class="col-3" style="margin-left: 170px;">
+                <div class="text-over-box">
+                <a>Chip</a>
+                <input type="text" id="simNumber" value="" readonly disabled />
+                </div>
+                <div class="text-over-box">
+                <a>Activo</a>
+                <input type="text" id="active" value="" readonly disabled />
+                </div>
+            </div>
 
+            <div class="col-2"></div>
+            <div class="col-3">
+                <div class="text-over-box">
+                <a>Fecha de Recarga</a>
+                <input type="date" id="fechaRecarga" value="" style="color: grey; text-align: center;" readonly disabled />
+                </div>
+                <div class="text-over-box">
+                <a>Fecha de Caducidad</a>
+                <input type="date" id="fechaCaducado" value="" style="color: grey; text-align: center;" readonly disabled />
+                </div>
+            </div>
+            </div>
+        
+        </section>
   <!-- Scripts -->
   <script src="scripts\seccion.js"></script>
   <script src="scripts\fecha.js"></script>
