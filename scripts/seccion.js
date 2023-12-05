@@ -29,6 +29,13 @@ function mostrarSeccion(seccionId) {
     // Muestra la sección correspondiente
     document.getElementById(seccionId).style.display = 'block';
 
+    // Marca el enlace como activo
+    document.querySelectorAll('nav a').forEach(function(enlace) {
+        enlace.classList.remove('active');
+    });
+
+    document.querySelector(`nav a[href="#${seccionId}"]`).classList.add('active');
+
 }
 
 window.onload = function () {

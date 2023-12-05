@@ -1,24 +1,30 @@
-/*Estilo Barra de Navegacion*/
 .header {
-    background-color: #F2F2F3; 
-    border-radius: 0.3em; 
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.2);
+    /*background-color: #F2F2F3;
+    border-radius: 0.3em;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.2);*/
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 nav ul {
-    list-style-type: none; 
-    padding: 0; 
-    display: flex; 
+    list-style-type: none;
+    padding: 0;
+    display: flex;
 }
-  
+
 nav li {
-    margin-right: 20px; 
+    margin-right: 20px;
 }
-  
+
 nav a {
-    text-decoration: none; 
-    color: black; 
-    font-family: 'Poppins', sans-serif; 
+    text-decoration: none;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+nav a.active, a:hover {
+    color: rgb(80, 184, 249);
+    font-weight: bold;
 }
 
 .fixed-header {
@@ -26,31 +32,31 @@ nav a {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #fffbfb; /* Puedes ajustar el color de fondo según tus preferencias */
+    background-color: black;
+    padding-top: 5px;
     z-index: 1000;
-    /*padding: 90px; /* Ajusta el relleno según tus preferencias */
-    margin: 8px;
-    margin-left: 10px;
- }
- 
- .fixed-header nav ul {
+}
+
+.fixed-header nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: space-around;
- }
- 
- .fixed-header nav ul li {
-    display: inline;
-    margin-right: 40px; /* Ajusta el margen según tus preferencias */
- }
+}
 
- /*  */
+.fixed-header nav ul li {
+    display: inline;
+    margin-right: 40px;
+    /* Ajusta el margen según tus preferencias */
+}
+
+/*  */
 body {
-    background-attachment: fixed; 
+    background-attachment: fixed;
     background-size: 100% 100%;
-    background-color: #f9f9f9;
+    background-color: #E0E0E0;
+    /*background-color: #f9f9f9;*/
     height: 100%;
 }
 
@@ -58,66 +64,86 @@ h1 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-family:'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 
 .h1-login {
     align-items: center;
     font-size: 200%;
-    font-family:'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 
 .p-fecha {
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif;
 }
 
 h2 {
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif;
     font-size: 14px;
 }
 
 /* Modulo Clientes */
 .clientes {
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif;
     font-size: 12px;
-    font-weight: 900; /* posiblemente se cambie de lugar al html */
+    font-weight: 900;
+    /* posiblemente se cambie de lugar al html */
 }
 
 input {
-    width:200px;
+    width: 200px;
     float: right;
     box-sizing: border-box;
-    background-color: #f1f1f1;
+    /*background-color: #f1f1f1;*/
+    background-color: rgb(220, 220, 220);
     color: black;
     border-radius: 5px;
-    margin: 5px 0; /* Ajusta el margen vertical */
+    margin: 5px 0;
     margin-bottom: 10px;
     padding: 3px;
 }
 
 select {
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif;
     font-size: 12px;
-    font-weight: 900;
+    /*font-weight: 900;*/
+    background-color: rgb(115, 115, 115);
+    border-radius: 6px;
+    padding: 3px;
+    color: #fff;
+    padding-right: 10px;
+}
+
+option {
+    background-color: white;
+    border-radius: 6px;
+    color: black;
+}
+
+option:hover {
+    color: blue;
 }
 
 section {
     margin-top: 50px;
     /*height: 100vh; /* Esto establece la altura de cada sección al 100% de la altura de la ventana */
-    padding: 20px; /* Añade un poco de espacio alrededor de cada sección */
-    box-sizing: border-box; /* Asegura que el relleno no incremente el tamaño total de la sección */
-    display: none; /* Oculta todas las secciones por defecto */
+    padding: 20px;
+    /* Añade un poco de espacio alrededor de cada sección */
+    box-sizing: border-box;
+    /* Asegura que el relleno no incremente el tamaño total de la sección */
+    display: none;
+    /* Oculta todas las secciones por defecto */
 }
 
 .custom-checkbox {
-    width:35px;
+    width: 35px;
     float: none;
 }
 
-button { 
+button {
     float: right;
     align-items: center;
     text-align: center;
@@ -126,7 +152,7 @@ button {
     font-weight: 900;
     cursor: pointer;
     margin-right: 4px;
-} 
+}
 
 
 
@@ -141,7 +167,7 @@ button {
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     margin-left: 4%;
-    width: 35%; 
+    width: 35%;
     float: left;
 }
 
@@ -150,13 +176,16 @@ button {
     border: 1px solid #CC3636;*/
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
-    width: 30%; /* Ajusta el ancho según tus necesidades */
-    float: right; /* Hace que el div flote hacia la izquierda */
+    width: 30%;
+    /* Ajusta el ancho según tus necesidades */
+    float: right;
+    /* Hace que el div flote hacia la izquierda */
     margin-right: 4%;
 }
 
 table {
-    border-collapse: collapse; /* Para unir los bordes de las celdas */
+    border-collapse: collapse;
+    /* Para unir los bordes de las celdas */
     width: 100%;
     border-radius: 12px;
     background-color: lightgrey;
@@ -168,15 +197,19 @@ table {
     padding-bottom: 20px;
 }
 
-th, td {
+th,
+td {
     padding-left: 7px;
     padding-right: 7px;
-    text-align: center; /* puede ser necesario que el contenido de la tabla no sea en el centro*/
-    border-bottom: 1px solid gray;/*#CC3636;*/
+    text-align: center;
+    /* puede ser necesario que el contenido de la tabla no sea en el centro*/
+    border-bottom: 1px solid gray;
+    /*#CC3636;*/
 }
 
 tbody tr:last-child td {
-    border-bottom: none; /* Elimina el borde inferior en la última celda de cada fila */
+    border-bottom: none;
+    /* Elimina el borde inferior en la última celda de cada fila */
 }
 
 .titulo-container {
@@ -195,44 +228,47 @@ tbody tr:last-child td {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 6px; /* Ajusta según sea necesario */
+    right: 6px;
+    /* Ajusta según sea necesario */
     cursor: pointer;
 }
 
-.panel-login{
+.panel-login {
     display: flex;
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
     background-color: #f5f5f5;
     height: 100%;
-  }
-.html{
+}
+
+.html {
     height: 100%;
 }
+
 .form-signin {
     max-width: 330px;
     padding: 15px;
-  }
-  
-  .form-signin .form-floating:focus-within {
+}
+
+.form-signin .form-floating:focus-within {
     z-index: 2;
-  }
-  
-  .form-signin input[type="email"] {
+}
+
+.form-signin input[type="email"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
-  }
-  
-  .form-signin input[type="password"] {
+}
+
+.form-signin input[type="password"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-  } 
+}
 
-  /*Modulo Recargas*/
-  .row { 
+/*Modulo Recargas*/
+.row {
     display: flex;
     flex-wrap: wrap;
 }
@@ -240,13 +276,16 @@ tbody tr:last-child td {
 .col-2 {
     width: 16.66%;
 }
+
 .col-3 {
     width: 25%;
 }
+
 .col-8 {
     width: 66.66%;
 }
-.text-over-box  {
+
+.text-over-box {
     margin-top: 30px;
     text-align: center;
     display: block;
@@ -257,7 +296,7 @@ tbody tr:last-child td {
 }
 
 .estructura-recarga {
-    float:inline-end; 
+    float: inline-end;
     width: 20%;
     align-content: center;
 }

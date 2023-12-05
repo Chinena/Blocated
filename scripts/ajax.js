@@ -67,6 +67,9 @@ function buscar_datos() {
                 $("#pago").val("1");
                 $("#plan").val("1");
             } else {
+                $('#boton_eliminar').show();
+                actualizarTextoBoton(true);
+
                 $("#razon_social").val(respuesta[0].razon_social);
                 //$("#razon_social").prop("disabled", true); 
                 $("#razon_social").prop("disabled", true);
@@ -95,6 +98,29 @@ function buscar_datos() {
         }
     });
 }
+
+
+// Manipulación con texto de Agregar - Actualizar
+var botonAgregar = document.getElementById('button_agregar');
+/*window.onload = function() {
+    actualizarTextoBoton(false); // Llama a la función para establecer el texto del botón al cargar la página
+};*/
+
+// Función para actualizar el texto del botón
+function actualizarTextoBoton(text) {
+  botonAgregar.innerText = text ? 'Actualizar datos' : 'Agregar Cliente';
+}
+
+/*document.getElementById('tu_boton_de_busqueda').addEventListener('click', function() {
+
+    actualizarTextoBoton();
+
+});*/
+
+// Ahora, cuando buscas un cliente exitosamente, puedes llamar a esta función para cambiar temporalmente el texto del botón
+// Por ejemplo, después de una operación AJAX exitosa:
+// actualizarTextoBoton();
+
 /*
 document.getElementById('boton_eliminar').addEventListener('click', function () {
     var razonSocialHidden = document.getElementById("razon_social_hidden").value;

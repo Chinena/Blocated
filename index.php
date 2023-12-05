@@ -50,9 +50,9 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
     
       <nav style="padding-top: 5px;">
         <ul>
-          <li><a href="#inicio" onclick="mostrarSeccion('inicio')">Inicio</a></li>
-          <li><a href="#clientes" onclick="mostrarSeccion('clientes')">Clientes</a></li>
-          <li><a href="#recargas" onclick="mostrarSeccion('recargas')">Recargas</a></li>
+          <li><a href="#inicio" onclick="mostrarSeccion('inicio')">I N I C I O</a></li>
+          <li><a href="#clientes" onclick="mostrarSeccion('clientes')">C L I E N T E S</a></li>
+          <li><a href="#recargas" onclick="mostrarSeccion('recargas')">R E C A R G A S</a></li>
         </ul>
       </nav>
   
@@ -133,16 +133,16 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
         <br>
         <fieldset style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
           <legend class="clientes">Buscar cliente por:</legend>
-          <div>
+          <div style="margin-top: 6px;">
             <span class="clientes" style="margin: 4px 10px;">Razon Social: </span>
             <input type="text" id="searchClient" autocomplete="off" style="text-align: center; width:200px;">
           </div>
-          <div>
+          <div style="margin-top: 6px;">
             <span class="clientes" style="margin: 4px 10px;">Nombre Contacto: </span>
             <input type="text" id="ClientWithName" autocomplete="off" style="text-align: center; width:200px;">
           </div>
           <div>
-            <button class="searchButton" onclick="buscar_datos()">Buscar</button>
+            <button class="searchButton button clean" onclick="buscar_datos()">Buscar</button>
           </div>
           <!-- 
           <span class="clientes">Razon Social: </span>
@@ -204,12 +204,12 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
       </div>
       </form>
       </fieldset>
-      <div clas="botones">
+      <div class="botones">
       <!--<button type="button" onclick="guardar_cliente()">Agregar Cliente</button>-->
-        <button type="button" id="button_agregar">Agregar Cliente</button>
+        <button type="button" id="button_agregar" class="button add">Agregar Cliente</button>
         <input type="hidden" name="pagina_clientes" value="../index.php#clientes">
-        <button id="boton_limpiar">Limpiar Campos</button>
-        <button id="boton_eliminar">Eliminar Cliente</button>
+        <button id="boton_limpiar" class="button clean">Limpiar Campos</button>
+        <button id="boton_eliminar" class="button delete" style="display:none;">Eliminar Cliente</button>
       </div>
 
     <div class="popup" id="popup">

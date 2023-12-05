@@ -30,7 +30,7 @@ document.getElementById('button_agregar').addEventListener('click', function (ev
   if (validarFormulario()) {
     // Mostrar el popup para indicar que se está agregando un cliente
     showPopup({
-      title: 'Agregando un nuevo cliente',
+      title: 'Se actualizará la base de datos',
       content: '¿Está seguro de que los datos son correctos?',
       showContinueButton: true,
       showCancelButton: true
@@ -173,71 +173,6 @@ function continueAction() {
     // Recarga la página después de enviar el formulario
     //window.location.reload();
   }, 2000); // 2000 milisegundos = 2 segundos
-
-  //Pasarlo como AJAX?
-  /*
-    var razonSocialHidden = document.getElementById("razon_social_hidden").value;
-    var contactoHidden = document.getElementById("contacto_hidden").value;
-
-  var parametros = {
-    "guardar": "1",
-    "razon_social": $('#razon_social').val(),
-    "rfc": $('#rfc').val(),
-    "email_factura": $('#email_factura').val(),
-    "tel_Oficina": $('#tel_Oficina').val(),
-    "domicilio": $('#domicilio').val(),
-    "contacto": $('#contacto').val(),
-    "email_conctanto": $('#email_contacto').val(),
-    "tel_Contacto": $('#tel_Contacto').val(),
-    "activo": $('#activeCheckbox').is(':checked') ? 1 : 0,  // Valor del checkbox
-    "pago": $('#pago').val(),  // Valor del select de Modalidad Pago
-    "plan": $('#plan').val(),   // Valor del select de Plan
-
-    "razon_social_hidden": razonSocialHidden,
-    "contacto_hidden": contactoHidden
-  };
-
-  $.ajax({
-    data: parametros,
-    dataType: 'json',
-    url: 'scripts/bd_clientes.php',
-    type: 'post',
-
-    beforeSend: function () {
-      //$('#respuesta').html("");
-      //$('#formulario').hide();
-      //$('#cargando').show();
-      console.log('Antes de enviar...');
-    },
-    error: function () {
-      console.log('Ocurrió un error...');
-    },
-    complete: function () {
-      // Mostrar formulario y ocultar spinner después de la llamada AJAX
-      //$('#cargando').hide();
-      //$('#formulario').show();
-      setTimeout(function () {
-        // Envía el formulario al archivo PHP si todas las validaciones son exitosas
-        //document.getElementById('agregarCliente').submit();
-    
-        // Cierra el popup después de enviar el formulario
-        closePopup();
-    
-        // Recarga la página después de enviar el formulario
-        //window.location.reload();
-      }, 1000);
-    },
-    success: function (respuesta) {
-      if (respuesta.success) {
-        // Éxito, hacer algo si es necesario
-        console.log(respuesta.message);
-      } else {
-        // Error, mostrar mensaje de error
-        console.error(respuesta.message);
-      }
-    }
-  });*/
-
 }
 
 // Función para resaltar los campos con errores
@@ -293,6 +228,9 @@ document.getElementById('boton_limpiar').addEventListener('click', function () {
       elemento.selectedIndex = 0; // Restablecer el valor seleccionado del campo select al valor predeterminado
     }
   }
+  actualizarTextoBoton(false);
+  $('#boton_eliminar').show();
+  $('#boton_eliminar').hide();
 });
 
 /////// Eliminar cliente
@@ -351,8 +289,10 @@ function eliminar_cliente() {
       // Mostrar formulario y ocultar spinner después de la llamada AJAX
       $('#cargando').hide();
       $('#formulario').show();
+      actualizarTextoBoton(false);
     },
     success: function (respuesta) {
+      $('#boton_eliminar').hide();
       if (respuesta.status === "success") {
         // Éxito al eliminar
         showPopup({
@@ -418,3 +358,5 @@ function eliminar_cliente() {
   });
 
 };
+
+

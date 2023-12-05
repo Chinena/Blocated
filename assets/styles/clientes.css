@@ -11,77 +11,120 @@
     overflow: auto;
 }*/
 .popup {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    /*background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  /*background-color: rgba(0, 0, 0, 0.6);
     border: 1px solid #ccc;*/
-    z-index: 1000;
-    animation: fadeIn 0.5s ease-in-out; /* Añadir una animación fadeIn */
+  z-index: 1000;
+  animation: fadeIn 0.5s ease-in-out;
+  /* Añadir una animación fadeIn */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.8);
-    }
-    to {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-}  
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
 
 .popup-content {
-    background-color: rgba(0, 0, 0, 0.7);
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 60%;
-    height: 30%;
-    position: relative;
-    text-align: center;
-    font-family: 'Poppins', sans-serif; 
-    color:#fff;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.50), 4px 4px 6px rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+  height: 30%;
+  position: relative;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.50), 4px 4px 6px rgba(0, 0, 0, 0.5);
 }
 
 /* Estilos para el botón de cierre (X) */
 .close-button {
-    position: absolute;
-    top: 7px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 /* Estilos para los botones "Continuar" y "Cancelar" */
-.continue-button, .cancel-button, .delete-button {
-    background-color: #008CBA;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    margin: 5px;
-    cursor: pointer;
+.continue-button,
+.cancel-button,
+.delete-button {
+  background-color: #008CBA;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
 }
 
-.continue-button:hover, .cancel-button:hover, .delete-button:hover {
-    background-color: #005E7D;
+.continue-button:hover,
+.cancel-button:hover,
+.delete-button:hover {
+  background-color: #005E7D;
 }
 
 .comentario {
   font-size: 11px;
+  font-weight: bold;
   color: gray;
-  font-family: 'Poppins', sans-serif; 
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Con los campos vacios o telefono *//*
+.button {
+
+  color: #fff;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.add {
+  background-color: #4CAF50;
+}
+
+.add:hover {
+  background-color: #29782b;
+}
+
+.clean {
+  background-color: #008CBA;
+}
+
+.clean:hover {
+  background-color: #005E7D;
+}
+
+.delete {
+  background-color: #FF0000;
+}
+
+.delete:hover {
+  background-color: #9a0505;
+}
+
+
+/* Con los campos vacios o telefono */
+/*
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -95,22 +138,32 @@
 }
 
 .error-pulsating {
-  animation: pulse 0.5s 1; /* Cambiado a 1 iteración *//*
+  animation: pulse 0.5s 1; /* Cambiado a 1 iteración */
+/*
 }*/
 @keyframes pulsate {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
   }
-  
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .error-pulsating {
-    border: 2px solid red;
-    animation: pulsate 1s ease-in-out 2;
+  border: 2px solid red;
+  animation: pulsate 1s ease-in-out 2;
 }
 
 .puff {
-    /*border: '';*/
-    transition: border-color 1s ease-out; /* Ajusta la duración y la función de temporización según tus preferencias */
+  /*border: '';*/
+  transition: border-color 1s ease-out;
+  /* Ajusta la duración y la función de temporización según tus preferencias */
 }
 
 .error-email {
@@ -118,7 +171,7 @@
   animation: pulsate 1s ease-in-out 2;
 }
 
-  
+
 
 /*.confirmation-modal {
     display: none;
@@ -148,17 +201,21 @@ button {
 }*/
 
 .searchButton {
-  float: none; 
-  margin-top: 8px; 
+  float: none;
+  margin-top: 8px;
   margin-left: 42%;
 }
 
 .formulario {
   display: flex;
   flex-direction: column;
-  background-color: lightgray;
+  background-color: rgb(186, 186, 186);
   justify-content: center;
   height: 80vh;
+  width: 80%;
+  margin: auto;
+  border-radius: 0.3em;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 fieldset {
@@ -167,6 +224,8 @@ fieldset {
   min-width: 70px;
   margin: 0 auto;
   text-align: center;
+  height:60%;
+  background-color: transparent;
 }
 
 .form-botton {
@@ -184,8 +243,8 @@ fieldset {
 
 .clientes-form div {
   flex: 1;
-  width: 10px; 
-  margin-right: 2%; 
+  width: 10px;
+  margin-right: 2%;
 }
 
 .clientes-form div:last-child {
@@ -201,10 +260,13 @@ fieldset {
 .botones {
   display: flex;
   flex-direction: row;
+  justify-content: right;
 }
 
-#button_agregar, #boton_limpiar {
-  margin-top: 10px; /* Espaciado entre los botones ... */
+#button_agregar,
+#boton_limpiar {
+  margin-top: 10px;
+  /* Espaciado entre los botones ... */
 }
 
 /*
