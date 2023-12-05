@@ -173,7 +173,7 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
           <pre class="clientes">
             Razon Social:<span class="comentario"> *</span> <br><input type="text" name="razon_social" id="razon_social" autocomplete="off" required /><br>
             RFC:<span class="comentario"> *</span> <br><input type="text" name="rfc" id="rfc" autocomplete="off" required  /><br>
-            Email Factura:<span class="comentario"> *</span> <br><input type="email" name="email_factura" id="email_factura" autocomplete="off" required /><br>
+            Email Factura:<span class="comentario"> *</span> <br><input type="text" name="email_factura" id="email_factura" autocomplete="off" required /><br>
             Telefono Oficina:<span class="comentario"> *</span> <br><input type="text" name="tel_Oficina" id="tel_Oficina" autocomplete="off" required /><br>
           </pre>
         </div>
@@ -182,7 +182,7 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
           <pre class="clientes">
             Domicilio:<span class="comentario"> *</span> <br><input type="text" name="domicilio" id="domicilio" autocomplete="off" required /><br>
             Nombre Contacto:<span class="comentario"> *</span> <br><input type="text" name="contacto" id="contacto" autocomplete="off" required /><br>
-            Email Contacto:<span class="comentario"> *</span> <br><input type="email" name="email_contacto" id="email_contacto" autocomplete="off" required /><br>
+            Email Contacto:<span class="comentario"> *</span> <br><input type="text" name="email_contacto" id="email_contacto" autocomplete="off" required /><br>
             Telefono Contacto:<span class="comentario"> *</span> <br><input type="text" name="tel_Contacto" id="tel_Contacto" autocomplete="off" required /><br><br>
           </pre>
         </div>
@@ -206,10 +206,10 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
       </fieldset>
       <div clas="botones">
       <!--<button type="button" onclick="guardar_cliente()">Agregar Cliente</button>-->
-      <button type="button" id="button_agregar">Agregar Cliente</button>
+        <button type="button" id="button_agregar">Agregar Cliente</button>
         <input type="hidden" name="pagina_clientes" value="../index.php#clientes">
         <button id="boton_limpiar">Limpiar Campos</button>
-        
+        <button id="boton_eliminar">Eliminar Cliente</button>
       </div>
 
     <div class="popup" id="popup">
@@ -218,6 +218,7 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
         <h1 id="popup-title"></h1>
         <p id="popup-message"></p>
         <button class="continue-button">Continuar</button>
+        <button class="delete-button" style="display: none;">Eliminar</button>
         <button class="cancel-button" onclick="closePopup()">Cancelar</button>
     </div>
     </div>
@@ -275,8 +276,6 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
   <!-- Scripts -->
   <script src="scripts\seccion.js"></script>
   <script src="scripts\fecha.js"></script>
-  <!--<script src="scripts\control.js"></script>-->
-  <!--<script src="scripts\control-previsto.js"></script>-->
   <script src="scripts/clientes.js"></script>
   <script src="scripts\ajax.js"></script>
   <script src="scripts\recargas.js"></script>

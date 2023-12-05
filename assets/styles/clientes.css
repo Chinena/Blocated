@@ -61,7 +61,7 @@
 }
 
 /* Estilos para los botones "Continuar" y "Cancelar" */
-.continue-button, .cancel-button {
+.continue-button, .cancel-button, .delete-button {
     background-color: #008CBA;
     color: #fff;
     padding: 10px 20px;
@@ -71,7 +71,7 @@
     cursor: pointer;
 }
 
-.continue-button:hover, .cancel-button:hover {
+.continue-button:hover, .cancel-button:hover, .delete-button:hover {
     background-color: #005E7D;
 }
 
