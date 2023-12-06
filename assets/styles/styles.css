@@ -1,57 +1,4 @@
-.header {
-    /*background-color: #F2F2F3;
-    border-radius: 0.3em;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.2);*/
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-}
-
-nav li {
-    margin-right: 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    
-}
-
-nav a.active, a:hover {
-    color: rgb(80, 184, 249);
-    font-weight: bold;
-}
-
-.fixed-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: black;
-    padding-top: 5px;
-    z-index: 1000;
-}
-
-.fixed-header nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-around;
-}
-
-.fixed-header nav ul li {
-    display: inline;
-    margin-right: 40px;
-    /* Ajusta el margen según tus preferencias */
-}
-
-/*  */
+/* General */
 body {
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -85,7 +32,116 @@ h2 {
     font-size: 14px;
 }
 
+.header {
+    /*background-color: #F2F2F3;
+    border-radius: 0.3em;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.2);*/
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/*Inicio*/
+.fecha-1 {
+    background-color: rgba(247, 162, 162, 0.9);
+}
+
+.fecha-2 {
+    background-color: rgba(238, 132, 132, 0.9); 
+}
+
+.fecha-3 {
+    background-color: rgba(233, 90, 90, 0.9); /* 20% de opacidad */
+    /*background-color: rgba(230, 138, 138, 0.7); /*#E68A8A;*/
+}
+
+/* Agrega más clases y colores según tus necesidades */
+
+.colores {
+    background: url('../images/degrados.png') no-repeat fixed;
+    background-size: cover;
+    /*transform: rotate(90deg);*/
+}
+
+.degradado {
+    background: linear-gradient(to bottom, #D52626, #F7A2A2);
+}
+
+#inicio {
+    display: block; /* Muestra la sección de inicio */
+}
+
+
+/* Barra de Navegacion */
+.navbar-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav li {
+    margin-right: 20px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  nav a.active,
+  a:hover {
+    color: rgb(80, 184, 249);
+    font-weight: bold;
+  }
+  
+  /* Estilos específicos para la barra de navegación fija */
+  .fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    padding-top: 5px;
+    z-index: 1000;
+  }
+  
+  .fixed-header nav ul {
+    justify-content: space-around;
+  }
+  
+  .fixed-header nav ul li {
+    display: inline;
+    margin-right: 40px;
+    /* Ajusta el margen según tus preferencias */
+  }
+  
+  /* Media query para hacer la barra de navegación responsive */
+  @media (max-width: 768px) {
+    .navbar-logo {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    nav ul {
+      flex-direction: column;
+    }
+  
+    nav li {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+
 /* Modulo Clientes */
+.seccion-clientes{
+    margin-top: 150px;
+}
 .clientes {
     font-family: 'Poppins', sans-serif;
     font-size: 12px;
@@ -153,7 +209,290 @@ button {
     cursor: pointer;
     margin-right: 4px;
 }
-
+/* Estilos para la ventana emergente */
+/*.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    overflow: auto;
+}*/
+.popup {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    /*background-color: rgba(0, 0, 0, 0.6);
+      border: 1px solid #ccc;*/
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-in-out;
+    /* Añadir una animación fadeIn */
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  .popup-content {
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    height: 30%;
+    position: relative;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.50), 4px 4px 6px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Estilos para el botón de cierre (X) */
+  .close-button {
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  /* Estilos para los botones "Continuar" y "Cancelar" */
+  .continue-button,
+  .cancel-button,
+  .delete-button {
+    background-color: #008CBA;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  .continue-button:hover,
+  .cancel-button:hover,
+  .delete-button:hover {
+    background-color: #005E7D;
+  }
+  
+  .comentario {
+    font-size: 11px;
+    font-weight: bold;
+    color: gray;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .button {
+  
+    color: #fff;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  .add {
+    background-color: #4CAF50;
+  }
+  
+  .add:hover {
+    background-color: #29782b;
+  }
+  
+  .clean {
+    background-color: #008CBA;
+  }
+  
+  .clean:hover {
+    background-color: #005E7D;
+  }
+  
+  .delete {
+    background-color: #FF0000;
+  }
+  
+  .delete:hover {
+    background-color: #9a0505;
+  }
+  
+  
+  /* Con los campos vacios o telefono */
+  /*
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .error-pulsating {
+    animation: pulse 0.5s 1; /* Cambiado a 1 iteración */
+  /*
+  }*/
+  @keyframes pulsate {
+    0% {
+      transform: scale(1);
+    }
+  
+    50% {
+      transform: scale(1.1);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .error-pulsating {
+    border: 2px solid red;
+    animation: pulsate 1s ease-in-out 2;
+  }
+  
+  .puff {
+    /*border: '';*/
+    transition: border-color 1s ease-out;
+    /* Ajusta la duración y la función de temporización según tus preferencias */
+  }
+  
+  .error-email {
+    border: 2px solid red;
+    animation: pulsate 1s ease-in-out 2;
+  }
+  
+  /*.confirmation-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  button {
+      margin: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+  }*/
+  
+  .searchButton {
+    float: none;
+    margin-top: 8px;
+    margin-left: 42%;
+  }
+  
+  .formulario {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(186, 186, 186);
+    justify-content: center;
+    height: 80vh;
+    width: 80%;
+    margin: auto;
+    border-radius: 0.3em;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+  }
+  
+  fieldset {
+    width: 80vw;
+    max-width: 800px;
+    min-width: 70px;
+    margin: 0 auto;
+    text-align: center;
+    height:60%;
+    background-color: transparent;
+  }
+  
+  .form-botton {
+    display: flex;
+    max-width: 150px;
+    justify-content: flex-end;
+    align-self: flex-end;
+  }
+  
+  .clientes-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .clientes-form div {
+    flex: 1;
+    width: 10px;
+    margin-right: 2%;
+  }
+  
+  .clientes-form div:last-child {
+    margin-bottom: 0;
+    width: 100%;
+  }
+  
+  .status-clients {
+    text-align: left;
+    margin-top: 10%;
+  }
+  
+  .botones {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+  }
+  
+  #button_agregar,
+  #boton_limpiar {
+    margin-top: 10px;
+    /* Espaciado entre los botones ... */
+  }
+  
+  /*
+  PRUEBAS CON BUSCAR CLIENTES
+  */
+  .resultado-cliente {
+    cursor: pointer;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .resultado-cliente:hover {
+    background-color: #f0f0f0;
+  }
 
 
 /*Sirve para ocultar las secciones en la misma pagina*/
@@ -268,6 +607,12 @@ tbody tr:last-child td {
 }
 
 /*Modulo Recargas*/
+.seccion-recargas{
+    margin-top: 150px;
+}
+.contenido-recargas{
+    margin-top: 50px;
+}
 .row {
     display: flex;
     flex-wrap: wrap;

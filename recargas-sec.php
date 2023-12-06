@@ -3,7 +3,7 @@ include ('config.php'); // Incluye el archivo de conexión
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
   
         <meta charset="UTF-8">
@@ -15,9 +15,6 @@ include ('config.php'); // Incluye el archivo de conexión
         
         <title>Blocated</title>
         
-        <!-- Utilizar AJAX de forma Online -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
         <!-- Fuente de letra Poppins -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,65 +31,59 @@ include ('config.php'); // Incluye el archivo de conexión
         <link href="assets/styles/clientes.css" rel="stylesheet" />
         
     </head>
-    <body> 
+    <body>
         <!-- Barra de Navegacion -->
-        <div class="navbar-logo header fixed-header" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px;">
+        <div class="navbar-logo header fixed-header">
             <img src="assets/images/logo.png" layout="responsive" width="211.76470588235293" height="60" alt="Logo Ubicuo" class="mobirise-loader" /> 
-            
-            <nav style="padding-top: 5px;">
+            <nav>
                 <ul>
-                <li><a href="#inicio" onclick="mostrarSeccion('inicio')">Inicio</a></li>
-                <li><a href="#clientes" onclick="mostrarSeccion('clientes')">Clientes</a></li>
-                <li><a href="#recargas" onclick="mostrarSeccion('recargas')">Recargas</a></li>
+                    <li><a href="index.php" >I N I C I O</a></li>
+                    <li><a href="clients-sec.php" >C L I E N T E S</a></li>
+                    <li><a href="recargas-sec.php" >R E C A R G A S</a></li>
                 </ul>
             </nav>
-        
         </div>
 
-        <section id="recargas">
-            <br>
-            <h1>Sección Recargas</h1>
-
-            <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8">
-                <div class="text-over-box">
-                <a>Nombre del Equipo</a>
-                <input type="text" id="equipo" />
-                <button class="submit-button" onclick="buscarEquipo()">Buscar</button>
-                </div>
-            </div>
-            <div class="col-2"></div>
-            </div>
-
-            <div class="row">
-            <div class="col-3" style="margin-left: 170px;">
-                <div class="text-over-box">
-                <a>Chip</a>
-                <input type="text" id="simNumber" value="" readonly disabled />
-                </div>
-                <div class="text-over-box">
-                <a>Activo</a>
-                <input type="text" id="active" value="" readonly disabled />
-                </div>
-            </div>
-
-            <div class="col-2"></div>
-            <div class="col-3">
-                <div class="text-over-box">
-                <a>Fecha de Recarga</a>
-                <input type="date" id="fechaRecarga" value="" style="color: grey; text-align: center;" readonly disabled />
-                </div>
-                <div class="text-over-box">
-                <a>Fecha de Caducidad</a>
-                <input type="date" id="fechaCaducado" value="" style="color: grey; text-align: center;" readonly disabled />
-                </div>
-            </div>
-            </div>
+        <div class="seccion-recargas">
+            <h1>Sección Recargas</h1> 
         
-        </section>
+            <div class="contenido-recargas">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <div class="text-over-box">
+                        <a>Nombre del Equipo</a>
+                        <input type="text" id="equipo" />
+                        <button class="submit-button" onclick="buscarEquipo()">Buscar</button>
+                        </div>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
 
-        <?php include('includes/scripts.php'); ?>
+                <div class="row">
+                    <div class="col-3" style="margin-left: 170px;">
+                        <div class="text-over-box">
+                        <a>Chip</a>
+                        <input type="text" id="simNumber" value="" readonly disabled />
+                        </div>
+                        <div class="text-over-box">
+                        <a>Activo</a>
+                        <input type="text" id="active" value="" readonly disabled />
+                    </div>
+                </div>
 
+                <div class="col-2"></div>
+                <div class="col-3">
+                    <div class="text-over-box">
+                        <a>Fecha de Recarga</a>
+                        <input type="date" id="fechaRecarga" value="" style="color: grey; text-align: center;" readonly disabled />
+                        </div>
+                        <div class="text-over-box">
+                        <a>Fecha de Caducidad</a>
+                        <input type="date" id="fechaCaducado" value="" style="color: grey; text-align: center;" readonly disabled />
+                    </div>
+                </div>    
+            </div>        
+        </div>
     </body>
 </html>
