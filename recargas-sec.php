@@ -1,5 +1,35 @@
 <?php
 include ('config.php'); // Incluye el archivo de conexión
+
+session_start();
+// Verifica si la variable de sesión 'usuario' está configurada
+if (!isset($_SESSION['usuario'])) {
+  echo'
+  <script>
+    alert("Por favor inicia sesión");
+    window.location = "login.php";
+  </script>';
+
+    session_destroy();
+  die();
+}
+if ($_SESSION['rol'] == 'admin') {
+  // El usuario tiene permisos de administrador, puede ver todas las páginas
+} elseif ($_SESSION['rol'] == 'operador') {
+  // El usuario tiene permisos de operador, puede ver las páginas específicas
+  $allowed_pages = array('index.php', 'recargas-sec.php');
+
+  // Verifica si la página actual está permitida
+  $current_page = basename($_SERVER['PHP_SELF']);
+  if (!in_array($current_page, $allowed_pages)) {
+      // Redirige a una página de permisos insuficientes o realiza alguna otra acción
+      echo '<script>
+        alert("Permisos insuficientes para acceder a esta página");
+        window.location = "index.php"; // o cualquier otra página
+      </script>';
+      exit();
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,50 +70,52 @@ include ('config.php'); // Incluye el archivo de conexión
                     <li><a href="index.php" >I N I C I O</a></li>
                     <li><a href="clients-sec.php" >C L I E N T E S</a></li>
                     <li><a href="recargas-sec.php" >R E C A R G A S</a></li>
+                    <li><a href="scripts/cerrar-s.php">CERRAR SESIÓN</a></li>
                 </ul>
             </nav>
         </div>
 
         <div class="seccion-recargas">
             <h1>Sección Recargas</h1> 
-        
+
             <div class="contenido-recargas">
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-8">
-                        <div class="text-over-box">
+                <div class="buscador">
+                    <div class="text-over-box">
                         <a>Nombre del Equipo</a>
-                        <input type="text" id="equipo" />
-                        <button class="submit-button" onclick="buscarEquipo()">Buscar</button>
+                        <div class="input-group">
+                            <input type="text" id="equipo" />
+                            <button class="submit-button" onclick="buscarEquipo()">Buscar</button>
                         </div>
                     </div>
-                    <div class="col-2"></div>
                 </div>
 
-                <div class="row">
-                    <div class="col-3" style="margin-left: 170px;">
-                        <div class="text-over-box">
+                <div class="info-recargas">
+                    <div class="text-over-box">
                         <a>Chip</a>
                         <input type="text" id="simNumber" value="" readonly disabled />
-                        </div>
-                        <div class="text-over-box">
+                    </div>
+                    <div class="text-over-box">
                         <a>Activo</a>
                         <input type="text" id="active" value="" readonly disabled />
                     </div>
                 </div>
 
-                <div class="col-2"></div>
-                <div class="col-3">
+                <div class="info-recargas">
                     <div class="text-over-box">
                         <a>Fecha de Recarga</a>
                         <input type="date" id="fechaRecarga" value="" style="color: grey; text-align: center;" readonly disabled />
-                        </div>
-                        <div class="text-over-box">
+                    </div>
+                    <div class="text-over-box">
                         <a>Fecha de Caducidad</a>
                         <input type="date" id="fechaCaducado" value="" style="color: grey; text-align: center;" readonly disabled />
                     </div>
-                </div>    
+                </div>
             </div>        
         </div>
+
+
+
+ 
+
     </body>
 </html>

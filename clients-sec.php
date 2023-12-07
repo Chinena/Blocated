@@ -1,5 +1,35 @@
 <?php
 include ('config.php'); // Incluye el archivo de conexión
+
+session_start();
+// Verifica si la variable de sesión 'usuario' está configurada
+if (!isset($_SESSION['usuario'])) {
+  echo'
+  <script>
+    alert("Por favor inicia sesión");
+    window.location = "login.php";
+  </script>';
+
+    session_destroy();
+  die();
+}
+if ($_SESSION['rol'] == 'admin') {
+  // El usuario tiene permisos de administrador, puede ver todas las páginas
+} elseif ($_SESSION['rol'] == 'operador') {
+  // El usuario tiene permisos de operador, puede ver las páginas específicas
+  $allowed_pages = array('index.php', 'recargas-sec.php');
+
+  // Verifica si la página actual está permitida
+  $current_page = basename($_SERVER['PHP_SELF']);
+  if (!in_array($current_page, $allowed_pages)) {
+      // Redirige a una página de permisos insuficientes o realiza alguna otra acción
+      echo '<script>
+        alert("Permisos insuficientes para acceder a esta página");
+        window.location = "index.php"; // o cualquier otra página
+      </script>';
+      exit();
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +72,7 @@ include ('config.php'); // Incluye el archivo de conexión
                     <li><a href="index.php" >I N I C I O</a></li>
                     <li><a href="clients-sec.php" >C L I E N T E S</a></li>
                     <li><a href="recargas-sec.php" >R E C A R G A S</a></li>
+                    <li><a href="scripts/cerrar-s.php">CERRAR SESIÓN</a></li>
                 </ul>
             </nav>
         </div> 

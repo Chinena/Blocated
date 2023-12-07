@@ -21,6 +21,17 @@ if ($stmt) {
 
     // Verificar si se encontró algún usuario
     if ($result->num_rows > 0) {
+        // Obtener los datos del usuario
+        $usuario_data = $result->fetch_assoc();
+
+        // Iniciar una sesión
+        session_start();
+
+        // Almacenar información sobre el usuario en la sesión
+        $_SESSION['usuario'] = $usuario;
+        $_SESSION['rol'] = $usuario_data['rol']; // Agregar la información del rol
+
+        // Redireccionar a la página principal
         header("Location: ../index.php");
         exit();
     } else {

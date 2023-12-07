@@ -9,6 +9,36 @@ include ('scripts/inicio.php'); // Incluye el archivo de consulta
 $datosCaducidadRecargas = controlRecargas($conn);
 $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
 
+session_start();
+// Verifica si la variable de sesión 'usuario' está configurada
+if (!isset($_SESSION['usuario'])) {
+  echo'
+  <script>
+    alert("Por favor inicia sesión");
+    window.location = "login.php";
+  </script>';
+
+    session_destroy();
+  die();
+}
+if ($_SESSION['rol'] == 'admin') {
+  // El usuario tiene permisos de administrador, puede ver todas las páginas
+} elseif ($_SESSION['rol'] == 'operador') {
+  // El usuario tiene permisos de operador, puede ver las páginas específicas
+  $allowed_pages = array('index.php', 'recargas-sec.php');
+
+  // Verifica si la página actual está permitida
+  $current_page = basename($_SERVER['PHP_SELF']);
+  if (!in_array($current_page, $allowed_pages)) {
+      // Redirige a una página de permisos insuficientes o realiza alguna otra acción
+      echo '<script>
+        alert("Permisos insuficientes para acceder a esta página");
+        window.location = "index.php"; // o cualquier otra página
+      </script>';
+      exit();
+  }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,8 +68,7 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
 
   <!-- Hoja de estilos -->
   <link href="assets/styles/styles.css" rel="stylesheet" />
-  
-  <link href="assets/styles/clientes.css" rel="stylesheet" />
+
   
 </head>
 <body> 
@@ -52,6 +81,8 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
         <li><a href="#inicio" onclick="mostrarSeccion('inicio')">I N I C I O</a></li>
         <li><a href="clients-sec.php">C L I E N T E S</a></li>
         <li><a href="recargas-sec.php">R E C A R G A S</a></li>
+        <li><a href="scripts/cerrar-s.php">CERRAR SESIÓN</a></li>
+        
       </ul>
     </nav>
   </div>
@@ -59,18 +90,19 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
   <!-- Contenido -->
     <!-- Inicio -->
   <section id="inicio">
-    <br>
-    <h1>Control de Recargas Diarias</h1>
-    <p class ="p-fecha" id="fecha"></p>
-    <br>
-    <div class="titulo-container">
-      <h2 style="margin-left: 12%;">Hay <?php echo count($datosCaducidadRecargas); ?> chips que expiran hoy</h2>
-      <h2 style="margin-right: 6%;">Previsión de recargas para los siguientes días</h2>
+    <div class="seccion-inicio">
+      <h1>Control de Recargas Diarias</h1>
+      <p class ="p-fecha" id="fecha"></p>
+      <br>
+      
+      <div class="titulo-container">
+        <h2 style="margin-left: 12%;">Hay <?php echo count($datosCaducidadRecargas); ?> chips que expiran hoy</h2>
+        <h2 style="margin-right: 6%;">Previsión de recargas para los siguientes días</h2>
+      </div>
+      <div>
+      <!--<button>Procesar</button>-->
+      </div>
     </div>
-    <div>
-    <!--<button>Procesar</button>-->
-    </div>
-    
     
     <div id="divTabla">
     <div class="table-margin-bottom">
@@ -122,8 +154,6 @@ $datosCaducidadTomorrow = controlRecargasTomorrow($conn);
       </table>
     </div>
   </section>
-
-    <!-- Clientes -->
   
 
     
