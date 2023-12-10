@@ -62,7 +62,6 @@ h2 {
   /*background-color: rgba(230, 138, 138, 0.7); /*#E68A8A;*/
 }
 
-/* Agrega más clases y colores según tus necesidades */
 
 .colores {
   background: url('../images/degrados.png') no-repeat fixed;
@@ -430,7 +429,7 @@ button {
 .formulario {
   display: flex;
   flex-direction: column;
-  background-color: rgb(186, 186, 186);
+  background-color: rgba(0, 0, 0, 0.8);
   justify-content: center;
   height: 80vh;
   width: 80%;
@@ -446,6 +445,7 @@ fieldset {
   min-width: 70px;
   margin: 0 auto;
   text-align: center;
+  color: white;
   height: 60%;
   background-color: transparent;
 }
@@ -466,7 +466,7 @@ fieldset {
 .clientes-form div {
   flex: 1;
   width: 10px;
-  margin-right: 2%;
+  /*margin-right: 2%;*/
 }
 
 .clientes-form div:last-child {
