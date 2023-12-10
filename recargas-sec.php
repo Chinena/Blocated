@@ -70,7 +70,7 @@ if ($_SESSION['rol'] == 'admin') {
                     <li><a href="index.php" >I N I C I O</a></li>
                     <li><a href="clients-sec.php" >C L I E N T E S</a></li>
                     <li><a href="recargas-sec.php" >R E C A R G A S</a></li>
-                    <li><a href="scripts/cerrar-s.php">CERRAR SESIÓN</a></li>
+                    <li><a href="scripts/cerrar-s.php" class="logout">CERRAR SESIÓN</a></li>
                 </ul>
             </nav>
         </div>
