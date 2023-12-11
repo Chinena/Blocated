@@ -57,9 +57,48 @@ if ($_SESSION['rol'] == 'admin') {
 
         <!-- Hoja de estilos -->
         <link href="assets/styles/styles.css" rel="stylesheet" />
-        <link href="assets/styles/inicio.css" rel="stylesheet" />
-        <link href="assets/styles/clientes.css" rel="stylesheet" />
         
+        <!-- script AJAX -->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+        <!-- Tu script AJAX -->
+        <script>
+            function buscarEquipo() {
+                var nombreEquipo = $('#equipo').val();
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'buscar_equipo.php', // Ruta a tu script PHP de búsqueda
+                    data: { nombreEquipo: nombreEquipo },
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data) {
+                            $('#simNumber').val(data.sim_number);
+                            $('#active').val(data.active);
+                            $('#fechaRecarga').val(data.FECHA_RECARGA);
+                            $('#fechaCaducado').val(data.FECHA_CADUCADO);
+                        } else {
+                            // Manejar el caso en el que no se encuentren resultados
+                            alert('Equipo no encontrado.');
+                            // Puedes limpiar los campos en caso de que haya algún valor antiguo
+                            limpiarCampos();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error en la solicitud AJAX:', status, error);
+                    }
+                });
+            }
+
+            // Función para limpiar los campos en caso de que no se encuentren resultados
+            function limpiarCampos() {
+                $('#simNumber').val('');
+                $('#active').val('');
+                $('#fechaRecarga').val('');
+                $('#fechaCaducado').val('');
+            }
+        </script>
+
     </head>
     <body>
         <!-- Barra de Navegacion -->
@@ -112,10 +151,6 @@ if ($_SESSION['rol'] == 'admin') {
                 </div>
             </div>        
         </div>
-
-
-
- 
 
     </body>
 </html>
