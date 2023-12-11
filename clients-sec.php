@@ -94,7 +94,7 @@ if ($_SESSION['rol'] == 'admin') {
                     <input type="text" id="ClientWithName" autocomplete="off" style="text-align: center; width:200px;">
                 </div>
                 <div>
-                    <button class="searchButton button clean" onclick="buscar_datos()">Buscar</button>
+                    <button type="button" class="searchButton button clean" onclick="buscar_datos()">Buscar</button>
                 </div>
 
                     <!-- 

@@ -270,6 +270,8 @@ function eliminar_cliente() {
     "contacto_hidden": contactoHidden
   };
 
+  $('#formulario').hide();
+  $('#cargando').show();
 
   $.ajax({
     data: parametros,
@@ -281,6 +283,12 @@ function eliminar_cliente() {
       //$('#respuesta').html("");
       $('#formulario').hide();
       $('#cargando').show();
+
+      setTimeout(function () {
+        $('#cargando').hide();
+        $('#formulario').show();
+      }, 2000);
+
     },
     error: function () {
       console.log('Ocurrió un error...');

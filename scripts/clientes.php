@@ -154,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             mysqli_stmt_bind_param($stmt_actualizar, "ssissiiiiss", $rfc, $email_factura, $tel_oficina, $domicilio, $email_contacto, $tel_contacto, $pago, $plan, $activo, $razon_social_hidden, $nombre_contacto_hidden);
 
             if (mysqli_stmt_execute($stmt_actualizar)) {
-                header("Location: ../index.php#clientes");
+                header("Location: ../clients-sec.php");  //header("Location: ../index.php#clientes");  
                 exit;
             } else {
                 echo "Error: " . $sql_actualizar . "<br>" . mysqli_error($conn);
@@ -172,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             mysqli_stmt_bind_param($stmt_insertar, "sssisssiiii", $razon_social_hidden, $rfc, $email_factura, $tel_oficina, $nombre_contacto_hidden, $domicilio, $email_contacto, $tel_contacto, $pago, $plan, $activo);
 
             if (mysqli_stmt_execute($stmt_insertar)) {
-                header("Location: ../index.php#clientes");
+                header("Location: ../clients-sec.php");  //header("Location: ../index.php#clientes");  
                 exit;
             } else {
                 echo "Error: " . $sql_insertar . "<br>" . mysqli_error($conn);
@@ -211,7 +211,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             mysqli_stmt_bind_param($stmt_actualizar, "ssissiiiiss", $rfc, $email_factura, $tel_oficina, $domicilio, $email_contacto, $tel_contacto, $pago, $plan, $activo, $razon_social, $nombre_contacto);
 
             if (mysqli_stmt_execute($stmt_actualizar)) {
-                header("Location: ../index.php#clientes");
+                header("Location: ../clients-sec.php");  //header("Location: ../index.php#clientes");  
                 exit;
             } else {
                 echo "Error: " . $sql_actualizar . "<br>" . mysqli_error($conn);
@@ -229,7 +229,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             mysqli_stmt_bind_param($stmt_insertar, "sssisssiiii", $razon_social, $rfc, $email_factura, $tel_oficina, $nombre_contacto, $domicilio, $email_contacto, $tel_contacto, $pago, $plan, $activo);
 
             if (mysqli_stmt_execute($stmt_insertar)) {
-                header("Location: ../index.php#clientes");
+                header("Location: ../clients-sec.php");  //header("Location: ../index.php#clientes");  
                 exit;
             } else {
                 echo "Error: " . $sql_insertar . "<br>" . mysqli_error($conn);
