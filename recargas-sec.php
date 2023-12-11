@@ -104,7 +104,7 @@ if ($_SESSION['rol'] == 'admin') {
     <body>
         <!-- Barra de Navegacion -->
         <div class="navbar-logo header fixed-header">
-            <img src="assets/images/logo.png" layout="responsive" width="211.76470588235293" height="60" alt="Logo Ubicuo" class="mobirise-loader" /> 
+            <img src="assets/images/logo.png" layout="responsive" width="211.76470588235293" height="60" alt="Logo Ubicuo" class="mobirise-loader img-fondo" /> 
             <nav>
                 <ul>
                     <li><a href="index.php" >I N I C I O</a></li>
@@ -153,9 +153,6 @@ if ($_SESSION['rol'] == 'admin') {
             </div>        
         </div>
 
-
-
- 
         <script src="scripts\seccion.js"></script>
     </body>
 </html>
