@@ -80,9 +80,11 @@ h2 {
 
 
 /* Barra de Navegacion */
+img {
+  /*background-color: white;*/
+}
 
 .img-fondo {
-  /*background-color: white opacity;*/
   border-radius: 3px;
   backdrop-filter: blur(5px);
   margin-left: 40px;
@@ -127,6 +129,7 @@ a:hover {
   left: 0;
   width: 100%;
   background-color: black;
+  /*background: linear-gradient(to right, white, black);*/
   padding-top: 5px;
   z-index: 1000;
 }

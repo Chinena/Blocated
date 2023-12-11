@@ -126,9 +126,9 @@ if ($_SESSION['rol'] == 'admin') {
                         <input type="hidden" id="razon_social_hidden" name="razon_social_hidden">
                         <pre class="clientes">
                             Razon Social:<span class="comentario"> *</span> <br><input type="text" name="razon_social" id="razon_social" autocomplete="off" required /><br>
-                            RFC:<span class="comentario"> *</span> <br><input type="text" name="rfc" id="rfc" autocomplete="off" required  /><br>
+                            RFC:<span class="comentario"> *</span> <br><input type="text" name="rfc" id="rfc" autocomplete="off" maxlength="13" required  /><br>
                             Email Factura:<span class="comentario"> *</span> <br><input type="text" name="email_factura" id="email_factura" autocomplete="off" required /><br>
-                            Telefono Oficina:<span class="comentario"> *</span> <br><input type="text" name="tel_Oficina" id="tel_Oficina" autocomplete="off" required /><br>
+                            Telefono Oficina:<span class="comentario"> *</span> <br><input type="text" name="tel_Oficina" id="tel_Oficina" maxlength="10" autocomplete="off" required /><br>
                         </pre>
                         </div>
                         <div>
@@ -137,7 +137,7 @@ if ($_SESSION['rol'] == 'admin') {
                             Domicilio:<span class="comentario"> *</span> <br><input type="text" name="domicilio" id="domicilio" autocomplete="off" required /><br>
                             Nombre Contacto:<span class="comentario"> *</span> <br><input type="text" name="contacto" id="contacto" autocomplete="off" required /><br>
                             Email Contacto:<span class="comentario"> *</span> <br><input type="text" name="email_contacto" id="email_contacto" autocomplete="off" required /><br>
-                            Telefono Contacto:<span class="comentario"> *</span> <br><input type="text" name="tel_Contacto" id="tel_Contacto" autocomplete="off" required /><br><br>
+                            Telefono Contacto:<span class="comentario"> *</span> <br><input type="text" name="tel_Contacto" id="tel_Contacto" maxlength="10" autocomplete="off" required /><br><br>
                         </pre>
                         </div>
                         <div id="infoAdicional"> 
