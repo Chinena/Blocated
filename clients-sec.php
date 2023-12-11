@@ -72,7 +72,7 @@ if ($_SESSION['rol'] == 'admin') {
                     <li><a href="index.php" >I N I C I O</a></li>
                     <li><a href="clients-sec.php" >C L I E N T E S</a></li>
                     <li><a href="recargas-sec.php" >R E C A R G A S</a></li>
-                    <li><a href="scripts/cerrar-s.php">CERRAR SESIÓN</a></li>
+                    <li><a href="scripts/cerrar-s.php" class="logout">CERRAR SESIÓN</a></li>
                 </ul>
             </nav>
         </div> 
@@ -94,7 +94,7 @@ if ($_SESSION['rol'] == 'admin') {
                     <input type="text" id="ClientWithName" autocomplete="off" style="text-align: center; width:200px;">
                 </div>
                 <div>
-                    <button class="searchButton button clean" onclick="buscar_datos()">Buscar</button>
+                    <button type="button" class="searchButton button clean" onclick="buscar_datos()">Buscar</button>
                 </div>
 
                     <!-- 
