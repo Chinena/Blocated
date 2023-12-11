@@ -1,4 +1,5 @@
 <?php
+//ultima version
 include ('config.php'); // Incluye el archivo de conexión
 
 session_start();
