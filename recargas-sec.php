@@ -116,6 +116,6 @@ if ($_SESSION['rol'] == 'admin') {
 
 
  
-
+        <script src="scripts\seccion.js"></script>
     </body>
 </html>

@@ -78,7 +78,7 @@ if ($_SESSION['rol'] == 'admin') {
     <img src="assets/images/logo.png" layout="responsive" width="211.76470588235293" height="60" alt="Logo Ubicuo" class="mobirise-loader" /> 
     <nav>
       <ul>
-        <li><a href="#inicio" onclick="mostrarSeccion('inicio')">I N I C I O</a></li>
+        <li><a href="index.php">I N I C I O</a></li>
         <li><a href="clients-sec.php">C L I E N T E S</a></li>
         <li><a href="recargas-sec.php">R E C A R G A S</a></li>
         <li><a href="scripts/cerrar-s.php" class="logout">CERRAR SESIÓN</a></li>

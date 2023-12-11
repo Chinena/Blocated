@@ -186,5 +186,6 @@ if ($_SESSION['rol'] == 'admin') {
         </div>       
             <script src="scripts/clientes.js"></script>
             <script src="scripts\ajax.js"></script>
+            <script src="scripts\seccion.js"></script>
     </body>
 </html>

@@ -1,33 +1,24 @@
-/*function mostrarSeccion(seccionId) {
-    // Ocultar todas las secciones
-    const secciones = document.querySelectorAll('section');
-    secciones.forEach(seccion => {
-        seccion.classList.add('hidden');
-    });
+document.addEventListener('DOMContentLoaded', function () {
+    // Obtén el nombre del archivo actual
+    var currentPage = window.location.pathname.split('/').pop();
+    console.log(currentPage);
 
-    // Mostrar la sección seleccionada
-    const seccion = document.getElementById(seccionId);
-    if (seccion) {
-        seccion.classList.remove('hidden');
+    // Marca el enlace correspondiente como activo
+    var enlace = document.querySelector(`nav a[href="${currentPage}"]`);
+    if (enlace) {
+        enlace.classList.add('active');
     }
-}
+  });
 
-// Esto permite ocultar todas las secciones al relogear la pagina o entrar por primera vez
-window.onload = function () {
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-        mostrarSeccion(hash);
-    }
-}*/
-
+/*
 function mostrarSeccion(seccionId) {
     // Oculta todas las secciones
-    document.querySelectorAll('section').forEach(function(seccion) {
+    /*document.querySelectorAll('section').forEach(function(seccion) {
       seccion.style.display = 'none';
     });
   
     // Muestra la sección correspondiente
-    document.getElementById(seccionId).style.display = 'block';
+    document.getElementById(seccionId).style.display = 'block';--/
 
     // Marca el enlace como activo
     document.querySelectorAll('nav a').forEach(function(enlace) {
@@ -36,12 +27,11 @@ function mostrarSeccion(seccionId) {
 
     document.querySelector(`nav a[href="#${seccionId}"]`).classList.add('active');
 
-}
+}*/
 
-window.onload = function () {
+/*window.onload = function () {
     const hash = window.location.hash.substring(1);
     if (hash) {
         mostrarSeccion(hash);
     }
-}
-  
+}*/
