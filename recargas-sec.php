@@ -1,5 +1,6 @@
 <?php
-//ultima version 5:28 pm 
+// última versión 12 diciembre 1:30
+
 include ('config.php'); // Incluye el archivo de conexión
 
 session_start();
@@ -32,7 +33,6 @@ if ($_SESSION['rol'] == 'admin') {
   }
 }
 
-
 //Busqueda de Recargas
 
 // Obtener el equipo desde la solicitud GET
@@ -63,6 +63,9 @@ if ($resultado->num_rows > 0) {
         header('Content-Type: application/json');
         echo json_encode($fila);
         exit;
+    } else {
+        // Si no es una solicitud AJAX, imprime los resultados para depuración
+        var_dump($fila);
     }
 }
 
@@ -99,7 +102,6 @@ $conn->close();
 
         
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <script src="recargas.js"></script>
 
     </head>
     <body>
@@ -154,9 +156,6 @@ $conn->close();
             </div>        
         </div>
 
-
-
- 
-        <script src="scripts\seccion.js"></script>
+        <script src="scripts\recargas.js"></script>
     </body>
 </html>
