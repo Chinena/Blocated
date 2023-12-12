@@ -6,20 +6,20 @@ $(document).ready(function () {
 //Buscar Cliente
 function buscar_datos() {
     var razonSocial = $("#searchClient").val();
-    var nombreContacto = $("#ClientWithName").val();
+    //var nombreContacto = $("#ClientWithName").val();
 
     //Para los que están ocultos (para actualizar correctamente)
     $("#razon_social_hidden").val(razonSocial);
-    $("#contacto_hidden").val(nombreContacto);
+    //$("#contacto_hidden").val(nombreContacto);
     var razonSocialHidden = document.getElementById("razon_social_hidden").value;
-    var contactoHidden = document.getElementById("contacto_hidden").value;
+    //var contactoHidden = document.getElementById("contacto_hidden").value;
     console.log(razonSocialHidden);
-    console.log(contactoHidden);
+    //console.log(contactoHidden);
 
     var parametros = {
         "buscar": "1",
         "razon_social": razonSocial,
-        "contacto": nombreContacto
+        //"contacto": nombreContacto
     };
 
     $.ajax({

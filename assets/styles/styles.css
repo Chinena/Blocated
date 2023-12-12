@@ -80,6 +80,19 @@ h2 {
 
 
 /* Barra de Navegacion */
+img {
+  /*background-color: white;*/
+}
+
+.img-fondo {
+  border-radius: 3px;
+  backdrop-filter: blur(5px);
+  margin-left: 40px;
+  margin-top: 5px;
+  padding-left: 3px;
+  padding-bottom: 3px;
+}
+
 .navbar-logo {
   display: flex;
   justify-content: space-between;
@@ -116,6 +129,7 @@ a:hover {
   left: 0;
   width: 100%;
   background-color: black;
+  /*background: linear-gradient(to right, white, black);*/
   padding-top: 5px;
   z-index: 1000;
 }
@@ -538,7 +552,7 @@ table {
   border-collapse: collapse;
   /* Para unir los bordes de las celdas */
   width: 100%;
-  border-radius: 12px;
+  border-radius: 1px;
   background-color: lightgrey;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.50), 4px 4px 6px rgba(0, 0, 0, 0.5);
 }
@@ -552,6 +566,8 @@ th,
 td {
   padding-left: 7px;
   padding-right: 7px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   text-align: center;
   /* puede ser necesario que el contenido de la tabla no sea en el centro*/
   border-bottom: 1px solid gray;

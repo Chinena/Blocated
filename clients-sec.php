@@ -66,7 +66,7 @@ if ($_SESSION['rol'] == 'admin') {
     <body>
         <!-- Barra de Navegacion -->
         <div class="navbar-logo header fixed-header">
-            <img src="assets/images/logo.png" layout="responsive" width="211.76470588235293" height="60" alt="Logo Ubicuo" class="mobirise-loader" /> 
+            <img src="assets/images/logo.png" layout="responsive" width="211.76470588235293" height="60" alt="Logo Ubicuo" class="mobirise-loader img-fondo" /> 
             <nav>
                 <ul>
                     <li><a href="index.php" >I N I C I O</a></li>
@@ -86,13 +86,15 @@ if ($_SESSION['rol'] == 'admin') {
                 <fieldset style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
                 <legend class="clientes">Buscar cliente por:</legend>
                 <div style="margin-top: 6px;">
-                    <span class="clientes" style="margin: 4px 10px;">Razon Social: </span>
+                    <span class="clientes" style="margin: 4px 10px;">Nombre o Razon Social: </span>
                     <input type="text" id="searchClient" autocomplete="off" style="text-align: center; width:200px;">
                 </div>
+                <!-- 
+                    // Se eliminó cliente contacto
                 <div style="margin-top: 6px;">
                     <span class="clientes" style="margin: 4px 10px;">Nombre Contacto: </span>
                     <input type="text" id="ClientWithName" autocomplete="off" style="text-align: center; width:200px;">
-                </div>
+                </div>-->
                 <div>
                     <button type="button" class="searchButton button clean" onclick="buscar_datos()">Buscar</button>
                 </div>
@@ -117,7 +119,9 @@ if ($_SESSION['rol'] == 'admin') {
                 
             <fieldset style="padding-bottom: 0;">
                 <legend class="clientes">Datos del cliente:</legend> 
+                <!-- 
                 <p class="comentario" style="text-align: right; margin-top: 0;">*Campos obligatorios</p>
+                <span class="comentario"> *</span> <br>-->
                 
                 <form method="POST" id="agregarCliente" action="scripts/clientes.php"> 
                     
@@ -125,19 +129,19 @@ if ($_SESSION['rol'] == 'admin') {
                         <div>
                         <input type="hidden" id="razon_social_hidden" name="razon_social_hidden">
                         <pre class="clientes">
-                            Razon Social:<span class="comentario"> *</span> <br><input type="text" name="razon_social" id="razon_social" autocomplete="off" required /><br>
-                            RFC:<span class="comentario"> *</span> <br><input type="text" name="rfc" id="rfc" autocomplete="off" required  /><br>
-                            Email Factura:<span class="comentario"> *</span> <br><input type="text" name="email_factura" id="email_factura" autocomplete="off" required /><br>
-                            Telefono Oficina:<span class="comentario"> *</span> <br><input type="text" name="tel_Oficina" id="tel_Oficina" autocomplete="off" required /><br>
+                            Razon Social: <input type="text" name="razon_social" id="razon_social" autocomplete="off" required /><br>
+                            RFC: <input type="text" name="rfc" id="rfc" autocomplete="off" maxlength="13" required  /><br>
+                            Email Factura: <br><input type="text" name="email_factura" id="email_factura" autocomplete="off" required /><br>
+                            Telefono Oficina: <input type="text" name="tel_Oficina" id="tel_Oficina" maxlength="10" autocomplete="off" /><br>
                         </pre>
                         </div>
                         <div>
                         <input type="hidden" id="contacto_hidden" name="contacto_hidden">
                         <pre class="clientes">
-                            Domicilio:<span class="comentario"> *</span> <br><input type="text" name="domicilio" id="domicilio" autocomplete="off" required /><br>
-                            Nombre Contacto:<span class="comentario"> *</span> <br><input type="text" name="contacto" id="contacto" autocomplete="off" required /><br>
-                            Email Contacto:<span class="comentario"> *</span> <br><input type="text" name="email_contacto" id="email_contacto" autocomplete="off" required /><br>
-                            Telefono Contacto:<span class="comentario"> *</span> <br><input type="text" name="tel_Contacto" id="tel_Contacto" autocomplete="off" required /><br><br>
+                            Domicilio: <input type="text" name="domicilio" id="domicilio" autocomplete="off" required /><br>
+                            Nombre Contacto: <input type="text" name="contacto" id="contacto" autocomplete="off" required /><br>
+                            Email Contacto: <input type="text" name="email_contacto" id="email_contacto" autocomplete="off" /><br>
+                            Telefono Contacto: <input type="text" name="tel_Contacto" id="tel_Contacto" maxlength="10" autocomplete="off" required /><br><br>
                         </pre>
                         </div>
                         <div id="infoAdicional"> 

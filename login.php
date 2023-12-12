@@ -66,6 +66,31 @@
         eyeOpenIcon.style.display = type === 'password' ? 'inline' : 'none';
         eyeClosedIcon.style.display = type === 'password' ? 'none' : 'inline';
     }
+
+    function alertSession(config) {
+        var popup = document.getElementById('popup');
+        var popupTitle = document.getElementById('popup-title');
+        var popupMessage = document.getElementById('popup-message');
+
+        popupTitle.innerHTML = config.title || 'Mensaje';
+        popupMessage.innerHTML = config.content || '';
+        popup.style.display = 'flex'; //block?
+
+        var continueButton = document.querySelector('.continue-button');
+        var deleteButton = document.querySelector('.delete-button');
+        var cancelButton = document.querySelector('.cancel-button');
+
+        continueButton.style.display = config.showContinueButton ? 'block' : 'none';
+        deleteButton.style.display = config.showDeleteButton ? 'block' : 'none';
+        cancelButton.style.display = config.showCancelButton ? 'block' : 'none';
+
+        deleteButton.onclick = config.onDelete;
+    }
+
+    function closeAlertSession() {
+        document.querySelector('.popup').style.display = 'none';
+    }
+
     </script>
 
 <!--

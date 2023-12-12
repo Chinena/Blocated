@@ -53,7 +53,7 @@ function validarFormulario() {
     // Verificar si el elemento es un campo de entrada de texto
     if (elemento.type === 'text' || elemento.type === 'textarea') {
       // Verificar si el campo es obligatorio y está vacío
-      if (elemento.required && elemento.value.trim() === '') { //if (elemento.required && (elemento.value.trim() === '' || /^\s*$/.test(elemento.value))) {
+      if (elemento.required) { //if (elemento.required && (elemento.value.trim() === '' || /^\s*$/.test(elemento.value))) {
         //closePopup();
         showPopup({
           title: 'Error de validación',
@@ -71,8 +71,8 @@ function validarFormulario() {
     if (!elemento.name.includes('email')) {
       elemento.value = elemento.value.toUpperCase();
     } else {
-      // Restriccion de contener "@ y .com" o "@ y .mx"
-      const emailRestriccion = /@.*\.(com|mx)$/;
+      // Restriccion de contener "@"
+      const emailRestriccion = /@/;
       if (!emailRestriccion.test(elemento.value)) {
         showPopup({
           title: 'Error de validación',

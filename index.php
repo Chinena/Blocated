@@ -75,7 +75,7 @@ if ($_SESSION['rol'] == 'admin') {
 
   <!-- Barra de Navegacion -->
   <div class="navbar-logo header fixed-header">
-    <img src="assets/images/logo.png" layout="responsive" width="211.76470588235293" height="60" alt="Logo Ubicuo" class="mobirise-loader" /> 
+    <img src="assets/images/logo.png" layout="responsive" width="211.76470588235293" height="60" alt="Logo Ubicuo" class="mobirise-loader img-fondo" /> 
     <nav>
       <ul>
         <li><a href="index.php">I N I C I O</a></li>
@@ -93,7 +93,6 @@ if ($_SESSION['rol'] == 'admin') {
     <div class="seccion-inicio">
       <h1>Control de Recargas Diarias</h1>
       <p class ="p-fecha" id="fecha"></p>
-      <br>
       
       <div class="titulo-container">
         <h2 style="margin-left: 12%;">Hay <?php echo count($datosCaducidadRecargas); ?> chips que expiran hoy</h2>
@@ -111,7 +110,7 @@ if ($_SESSION['rol'] == 'admin') {
               <tr style="font-weight: 900;">
                 <th>Chip</th>
                 <th>Fecha de Recarga</th>
-                <th>Vencimiento</th>
+                <th>Fecha de Vencimiento</th>
                 <th>Monto</th>
               </tr>
           </thead>
@@ -131,13 +130,15 @@ if ($_SESSION['rol'] == 'admin') {
     </div>
     
     <div id="divTabla2">
+    <div class="table-margin-bottom">
       <table>
         <thead>
             <tr style="font-weight: 900;">
-              <th>Dia</th>
-              <th>Cantidad</th>
-              <th>Chips</th>
-              <th>Total Cantidad</th>
+              <th>Fecha de Vencimiento</th>
+              <th>Chips $10</th>
+              <th>Monto Total</th>
+              <th>Chips $50</th>
+              <th>Monto Total</th>
             </tr>
         </thead>
         <!--<tbody id="tbody2">-->
@@ -145,13 +146,15 @@ if ($_SESSION['rol'] == 'admin') {
             <?php foreach ($datosCaducidadTomorrow as $dato): ?>
               <tr>
                 <td><?php echo $dato['FECHA_CADUCADO']; ?></td>
-                <td>$ <?php echo $dato['MONTO']; ?></td>
-                <td><?php echo $dato['CANTIDAD_CLIENTES']; ?></td>
-                <td>$ <?php echo $dato['MONTO_TOTAL']; ?></td>
+                <td><?php echo $dato['CANTIDAD_CLIENTES_10']; ?></td>
+                <td>$ <?php echo $dato['MONTO_TOTAL_10']; ?></td>
+                <td><?php echo $dato['CANTIDAD_CLIENTES_50']; ?></td>
+                <td>$ <?php echo $dato['MONTO_TOTAL_50']; ?></td>
               </tr>
             <?php endforeach; ?>
         </tbody>
       </table>
+    </div>
     </div>
   </section>
   
