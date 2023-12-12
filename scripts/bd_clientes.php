@@ -8,18 +8,18 @@ if(isset($_POST['buscar'])){
     #$razon_social = $_POST['razon_social'];
     #$nombre_contacto = $_POST['nombre_contacto'];
     $razon_social = mysqli_real_escape_string($conn, $_POST['razon_social']);
-    $nombre_contacto = mysqli_real_escape_string($conn, $_POST['contacto']);
+    //$nombre_contacto = mysqli_real_escape_string($conn, $_POST['contacto']);
 
     $cliente = array();
     $cliente['existe'] = "0";
 
-    $stmt = mysqli_prepare($conn, 'SELECT * FROM clientes WHERE UPPER(razon_social) = UPPER(?) AND UPPER(contacto) = UPPER(?)');
+    $stmt = mysqli_prepare($conn, 'SELECT * FROM clientes WHERE UPPER(razon_social) = UPPER(?) OR UPPER(contacto) = UPPER(?)');
 
     if (!$stmt) {
         die('Error en la preparación de la consulta.');    # . mysqli_error($conn));
     }
 
-    mysqli_stmt_bind_param($stmt, 'ss', $razon_social, $nombre_contacto);
+    mysqli_stmt_bind_param($stmt, 'ss', $razon_social, $razon_social);
 
     if (!mysqli_stmt_execute($stmt)) {
         die('Error al ejecutar la consulta.');  # . mysqli_stmt_error($stmt));
