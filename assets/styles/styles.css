@@ -28,9 +28,9 @@ h1 {
 .p-fecha {
   justify-content: center;
   align-items: center;
-  text-align: center;
+  text-align: left;
   font-family: 'Raleway', sans-serif;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 h2 {
@@ -438,11 +438,13 @@ button {
       cursor: pointer;
   }*/
 
-.cliente-item{
+.cliente-item {
   cursor: pointer;
-  margin: 10px; /* Ajusta según sea necesario */
+  margin: 10px;
+  /* Ajusta según sea necesario */
   padding: 10px;
-  background-color: #f0f0f0; /* Color de fondo de cada elemento, ajusta según sea necesario */
+  background-color: #f0f0f0;
+  /* Color de fondo de cada elemento, ajusta según sea necesario */
   border-radius: 5px;
 }
 
@@ -451,7 +453,7 @@ button {
 }
 
 .cliente-item-centrado {
-  list-style-type: none; 
+  list-style-type: none;
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -572,9 +574,9 @@ fieldset {
     border: 1px solid #CC3636;*/
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
-  margin-left: 4%;
-  width: 35%;
-  float: left;
+  margin: auto;
+  margin-right: 10%;
+  
 }
 
 #divTabla2 {
@@ -603,15 +605,24 @@ table {
   padding-bottom: 20px;
 }
 
+th {
+  background-color: #005E7D;
+  color: white;
+}
+
+td {
+  font-family: 'Raleway', sans-serif;
+}
+
 th,
 td {
   padding-left: 7px;
-  padding-right: 7px;
+  padding-right: 10px;
   padding-top: 2px;
   padding-bottom: 2px;
   text-align: center;
   /* puede ser necesario que el contenido de la tabla no sea en el centro*/
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #005E7D;
   /*#CC3636;*/
 }
 
@@ -625,6 +636,22 @@ tbody tr:last-child td {
   display: flex;
   justify-content: space-between;
   /*margin: 0 10%; /* Ajusta el margen según tu diseño */
+}
+
+.export-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.column {
+  flex: 2; /* Ajusta el valor según tus necesidades */
+  padding: 10px;
+}
+
+.column.small {
+  flex: 0.5; /* Puedes ajustar este valor según tus necesidades */
 }
 
 /*Login*/
@@ -643,8 +670,10 @@ tbody tr:last-child td {
 
 .panel-login {
   position: absolute;
-  top: 50%; /* Centrar verticalmente el panel */
-  left: 65%; /* Centrar horizontalmente el panel */
+  top: 50%;
+  /* Centrar verticalmente el panel */
+  left: 65%;
+  /* Centrar horizontalmente el panel */
   transform: translate(-50%, -50%) scale(0.7);
   transform-origin: center;
   z-index: 1;
@@ -704,17 +733,21 @@ tbody tr:last-child td {
 }
 
 .logout i {
-  font-size: 20px; /* Tamaño del ícono, ajusta según sea necesario */
+  font-size: 20px;
+  /* Tamaño del ícono, ajusta según sea necesario */
 }
 
 .logout {
   display: block;
   text-align: center;
   color: red;
-  font-weight: bold; /* Opcional: Ajusta según tu preferencia */
+  font-weight: bold;
+  /* Opcional: Ajusta según tu preferencia */
   text-decoration: none;
-  width: 100%; /* El enlace ocupa todo el ancho */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el enlace */
+  width: 100%;
+  /* El enlace ocupa todo el ancho */
+  cursor: pointer;
+  /* Cambia el cursor al pasar sobre el enlace */
 }
 
 .back-login {

@@ -92,15 +92,48 @@ if ($_SESSION['rol'] == 'admin') {
     <div>
       <p class ="p-fecha" id="fecha"></p>
       <div class="titulo-container">
-        <h2 style="margin-left: 12%;">Hay <?php echo count($datosCaducidadRecargas); ?> chips que expiran hoy</h2>
-        <h2 style="margin-right: 8%;">Previsión de recargas para los siguientes días</h2>
+        <div class="column">
+        <h2 style="margin-left: 20%; font-weight: 300; font-family: 'Raleway', sans-serif;">Hay <span class="grosor" style="color: #005E7D; font-family: 'Raleway', sans-serif;"><?php echo count($datosCaducidadRecargas); ?></span> chips que expiran hoy</h2>
+        <!--<h2 style="margin-right: 8%;">Previsión de recargas para los siguientes días</h2>-->
+
+        <div id="divTabla">
+          <div class="table-margin-bottom">
+            <table id="dataTable" style="border-radius: 3px;">
+                <thead>
+                    <tr class="grosor">
+                      <th>Chip</th>
+                      <th>Fecha de Recarga</th>
+                      <th>Fecha de Vencimiento</th>
+                      <th>Monto</th>
+                    </tr>
+                </thead>
+                <!--<tbody id="tbody">-->
+                <tbody>
+                  <?php foreach ($datosCaducidadRecargas as $dato): ?>
+                    <tr>
+                      <td><?php echo $dato['CHIP']; ?></td>
+                      <td><?php echo $dato['FECHA_RECARGA']; ?></td>
+                      <td><?php echo $dato['FECHA_CADUCADO']; ?></td>
+                      <td>$ <?php echo $dato['MONTO']; ?></td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+            </table>
+          </div>
+        </div>
+
+        </div>
+        <div class="column small export-container">
+          <h2>Recarga Masiva</h2>
+          <button id="btn-export" type="button" class="button export">Exportar CSV</button>
+        </div>
+        <div class="column">
+          <h2 style="text-align: center;">Grafica</h2>
+        </div>
       </div>
     </div>
-    <div class="export-container">
-      <button type="button" class="button export">Exportar CSV</button>
-    </div>
-    
-    
+
+    <!--
     <div id="divTabla">
     <div class="table-margin-bottom">
       <table style="border-radius: 6px;">
@@ -112,7 +145,7 @@ if ($_SESSION['rol'] == 'admin') {
                 <th>Monto</th>
               </tr>
           </thead>
-          <!--<tbody id="tbody">-->
+          <!--<tbody id="tbody">--/
           <tbody>
             <?php foreach ($datosCaducidadRecargas as $dato): ?>
               <tr>
@@ -127,7 +160,7 @@ if ($_SESSION['rol'] == 'admin') {
     </div>
     </div>
     
-    <div id="divTabla2">
+    <!--<div id="divTabla2">
     <div class="table-margin-bottom">
       <table>
         <thead>
@@ -139,7 +172,7 @@ if ($_SESSION['rol'] == 'admin') {
               <th>Monto Total</th>
             </tr>
         </thead>
-        <!--<tbody id="tbody2">-->
+        <!--<tbody id="tbody2">--/
         <tbody>
             <?php foreach ($datosCaducidadTomorrow as $dato): ?>
               <tr>
@@ -153,7 +186,7 @@ if ($_SESSION['rol'] == 'admin') {
         </tbody>
       </table>
     </div>
-    </div>
+    </div>-->
   </section>
   
 
@@ -162,6 +195,33 @@ if ($_SESSION['rol'] == 'admin') {
   <script src="scripts\seccion.js"></script>
   <script src="scripts\fecha.js"></script>
   <script src="scripts\procesar-csv.js"></script> 
+  <script>
+    const dataTable = document.getElementById('dataTable');
+
+    //new TableCSVExporter(dataTable);
+    //console.log(new TableCSVExporter(dataTable, false).convertToCSV());
+    const btnExportToCsv = document.getElementById('btn-export');
+
+    btnExportToCsv.addEventListener("click", () => {
+      const exporter = new TableCSVExporter(dataTable); //se añade ', false' en los parametros si no quieres encabezados
+      const csvOutput = exporter.convertToCSV();
+      const csvBlob = new Blob([csvOutput], {type: "text/csv"});
+      const blobUrl = URL.createObjectURL(csvBlob);
+
+      const currentDate = new Date().toISOString().split('T')[0];
+      const fileName = `Recarga-Masiva ${currentDate}.csv`
+      const anchorElement = document.createElement("a");
+
+      anchorElement.href = blobUrl;
+      anchorElement.download = fileName;
+      anchorElement.click();
+
+      setTimeout(() => {
+        URL.revokeObjectURL(blobUrl);
+      }, 500);
+    
+    })
+  </script> 
 
 </body>
 </html>
