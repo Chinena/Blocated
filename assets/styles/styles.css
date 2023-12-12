@@ -322,7 +322,6 @@ button {
 }
 
 .button {
-
   color: #fff;
   padding: 8px 10px;
   border: none;
@@ -353,6 +352,14 @@ button {
 
 .delete:hover {
   background-color: #9a0505;
+}
+
+.export {
+  background-color: #29782b;
+}
+
+.export:hover {
+  background-color: #165218;
 }
 
 

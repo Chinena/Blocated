@@ -30,8 +30,8 @@
     <div class="panel-login"> 
         <main class="form-signin w-100 m-auto">
             <form action="./scripts/inicio-s.php" method="POST">
-                <br><h1 class="h1-login">Control de Recargas Blocated</h1><br>
-                <img src="assets/images/logo blocated.png" width="100" height="100" class="icon-login" alt="logo" draggable="false">
+                <h1 class="h1-login">Control de Recargas Blocated</h1>
+                <img src="assets/images/logo blocated.png" width="90" height="90" class="icon-login" alt="logo" draggable="false">
 
                 <div class="user-container">
                 <input type="usuario" id="floatingInput" name="usuario" /> 

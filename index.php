@@ -91,15 +91,15 @@ if ($_SESSION['rol'] == 'admin') {
   <section id="inicio">
     <div>
       <p class ="p-fecha" id="fecha"></p>
-      
       <div class="titulo-container">
         <h2 style="margin-left: 12%;">Hay <?php echo count($datosCaducidadRecargas); ?> chips que expiran hoy</h2>
         <h2 style="margin-right: 8%;">Previsión de recargas para los siguientes días</h2>
       </div>
-      <div>
-      <!--<button>Procesar</button>-->
-      </div>
     </div>
+    <div class="export-container">
+      <button type="button" class="button export">Exportar CSV</button>
+    </div>
+    
     
     <div id="divTabla">
     <div class="table-margin-bottom">
@@ -161,9 +161,7 @@ if ($_SESSION['rol'] == 'admin') {
   <!-- Scripts -->
   <script src="scripts\seccion.js"></script>
   <script src="scripts\fecha.js"></script>
- 
-
- 
+  <script src="scripts\procesar-csv.js"></script> 
 
 </body>
 </html>
