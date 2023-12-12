@@ -75,7 +75,7 @@ if ($_SESSION['rol'] == 'admin') {
 
   <!-- Barra de Navegacion -->
   <div class="navbar-logo header fixed-header">
-    <img src="assets/images/logo.png" layout="responsive" width="211.76470588235293" height="60" alt="Logo Ubicuo" class="mobirise-loader img-fondo" /> 
+    <img src="assets/images/logo-fondoblanco.jpeg" layout="responsive" width="190" height="50" alt="Logo Ubicuo" class="mobirise-loader img-fondo" /> 
     <nav>
       <ul>
         <li><a href="index.php">I N I C I O</a></li>
