@@ -31,6 +31,43 @@ if ($_SESSION['rol'] == 'admin') {
       exit();
   }
 }
+
+
+//Busqueda de Recargas
+
+// Obtener el equipo desde la solicitud GET
+$equipo = isset($_GET['equipo']) ? $_GET['equipo'] : '';
+
+$query = "SELECT
+            prueba_recargas.FECHA_RECARGA,
+            prueba_recargas.FECHA_CADUCADO,
+            prueba_recargas.MONTO,
+            devices.name,
+            devices.sim_number,
+            devices.active
+          FROM
+            prueba_recargas
+          INNER JOIN
+            devices ON prueba_recargas.CHIP = devices.sim_number
+          WHERE
+            devices.name LIKE '%$equipo%'";
+
+$resultado = $conn->query($query);
+
+// Verificar si se obtuvieron resultados
+if ($resultado->num_rows > 0) {
+    $fila = $resultado->fetch_assoc();
+
+    // Si es una solicitud AJAX, enviar la respuesta como JSON
+    if (isset($_GET['ajax'])) {
+        header('Content-Type: application/json');
+        echo json_encode($fila);
+        exit;
+    }
+}
+
+// Cerrar la conexión a la base de datos
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -59,46 +96,8 @@ if ($_SESSION['rol'] == 'admin') {
         <!-- Hoja de estilos -->
         <link href="assets/styles/styles.css" rel="stylesheet" />
         
-        <!-- script AJAX -->
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-        <!-- Tu script AJAX -->
-        <script>
-            function buscarEquipo() {
-                var nombreEquipo = $('#equipo').val();
-
-                $.ajax({
-                    type: 'GET',
-                    url: 'buscar_equipo.php', // Ruta a tu script PHP de búsqueda
-                    data: { nombreEquipo: nombreEquipo },
-                    dataType: 'json',
-                    success: function(data) {
-                        if (data) {
-                            $('#simNumber').val(data.sim_number);
-                            $('#active').val(data.active);
-                            $('#fechaRecarga').val(data.FECHA_RECARGA);
-                            $('#fechaCaducado').val(data.FECHA_CADUCADO);
-                        } else {
-                            // Manejar el caso en el que no se encuentren resultados
-                            alert('Equipo no encontrado.');
-                            // Puedes limpiar los campos en caso de que haya algún valor antiguo
-                            limpiarCampos();
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error en la solicitud AJAX:', status, error);
-                    }
-                });
-            }
-
-            // Función para limpiar los campos en caso de que no se encuentren resultados
-            function limpiarCampos() {
-                $('#simNumber').val('');
-                $('#active').val('');
-                $('#fechaRecarga').val('');
-                $('#fechaCaducado').val('');
-            }
-        </script>
+        <script src="recargas.js"></script>
 
     </head>
     <body>
@@ -124,11 +123,12 @@ if ($_SESSION['rol'] == 'admin') {
                         <a>Nombre del Equipo</a>
                         <div class="input-group">
                             <input type="text" id="equipo" />
-                            <button class="submit-button" onclick="buscarEquipo()">Buscar</button>
+                            <button class="submit-button">Buscar</button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Resto del contenido de recargas-sec.php -->
                 <div class="info-recargas">
                     <div class="text-over-box">
                         <a>Chip</a>
@@ -150,12 +150,11 @@ if ($_SESSION['rol'] == 'admin') {
                         <input type="date" id="fechaCaducado" value="" style="color: grey; text-align: center;" readonly disabled />
                     </div>
                 </div>
+                <!-- Fin del resto del contenido -->
             </div>        
         </div>
 
 
-
  
-        <script src="scripts\seccion.js"></script>
     </body>
 </html>
