@@ -44,18 +44,18 @@ if(isset($_POST['buscar'])){
 ########################################
 if(isset($_POST['eliminar'])){
 
-    ##$razon_social = mysqli_real_escape_string($conn, $_POST['razon_social']);
+    $razon_social = mysqli_real_escape_string($conn, $_POST['razon_social']);
     #$rfc = mysqli_real_escape_string($conn, $_POST['rfc']);
     #$email_factura = mysqli_real_escape_string($conn, $_POST['email_factura']);
     #$tel_oficina = mysqli_real_escape_string($conn, $_POST['tel_Oficina']);
     #$domicilio = mysqli_real_escape_string($conn, $_POST['domicilio']);
-    ##$nombre_contacto = mysqli_real_escape_string($conn, $_POST['contacto']);
+    $nombre_contacto = mysqli_real_escape_string($conn, $_POST['contacto']);
     #$email_contacto = mysqli_real_escape_string($conn, $_POST['email_contacto']);
     #$tel_contacto = mysqli_real_escape_string($conn, $_POST['tel_Contacto']);
 
     // Campos ocultos
-    $razon_social_hidden = isset($_POST['razon_social_hidden']) ? mysqli_real_escape_string($conn, $_POST['razon_social_hidden']) : '';
-    $nombre_contacto_hidden = isset($_POST['contacto_hidden']) ? mysqli_real_escape_string($conn, $_POST['contacto_hidden']) : '';
+    //$razon_social_hidden = isset($_POST['razon_social_hidden']) ? mysqli_real_escape_string($conn, $_POST['razon_social_hidden']) : '';
+    //$nombre_contacto_hidden = isset($_POST['contacto_hidden']) ? mysqli_real_escape_string($conn, $_POST['contacto_hidden']) : '';
     
     #$pago = mysqli_real_escape_string($conn, $_POST['pago']);
     #$plan = mysqli_real_escape_string($conn, $_POST['plan']);
@@ -64,6 +64,69 @@ if(isset($_POST['eliminar'])){
 
     $existe = "0";
 
+    $stmt = mysqli_prepare($conn, 'SELECT * FROM clientes WHERE UPPER(razon_social) = UPPER(?) AND UPPER(contacto) = UPPER(?)');    
+        if (!$stmt) {
+            die('Error en la preparación de la consulta: ' . mysqli_error($conn));
+        }
+        mysqli_stmt_bind_param($stmt, 'ss', $razon_social, $nombre_contacto);
+        if (!mysqli_stmt_execute($stmt)) {
+            die('Error al ejecutar la consulta: ' . mysqli_stmt_error($stmt));
+        }
+
+        $resultados = mysqli_stmt_get_result($stmt);
+        // Verificar si existe o no en la base de datos
+        while ($query = mysqli_fetch_array($resultados, MYSQLI_ASSOC)) {
+            $existe = "1";
+        }
+
+        //Consultar si existe para eliminar datos o regresar un error
+        if ($existe == "1"){
+            //Elimina cliente de la BD con razon_social y nombre_contacto
+            $sql_eliminar = "DELETE FROM clientes WHERE razon_social = ? AND contacto = ?";
+            $stmt_eliminar = mysqli_prepare($conn, $sql_eliminar);
+
+            if (!$stmt_eliminar) {
+                die('Error en la preparación de la consulta de eliminación: ' . mysqli_error($conn));
+            }
+
+            mysqli_stmt_bind_param($stmt_eliminar, "ss", $razon_social, $nombre_contacto);
+
+            if (mysqli_stmt_execute($stmt_eliminar)) {
+                header('Content-Type: application/json');
+                echo json_encode(array(
+                    'status' => 'success',
+                    'message' => 'Eliminación exitosa',
+                    'clienteEliminado' => array(
+                        'razon_social' => $razon_social,
+                        'contacto' => $nombre_contacto
+                    )
+                ));
+                exit;
+            } else {
+                header('Content-Type: application/json');
+                echo json_encode(array(
+                    'status' => 'error',
+                    'message' => 'Error al eliminar el cliente'
+                ));
+                exit;
+            }
+            mysqli_stmt_close($stmt_eliminar);
+
+        } else {
+            // No hacer nada, devolver un error para mostrar ShowpopUp
+            // No existe un cliente con la información proporcionada.
+            header('Content-Type: application/json');
+            echo json_encode(array(
+                'status' => 'error',
+                'message' => 'No existe un cliente con la información proporcionada.'
+            ));
+            exit;
+            
+        }
+    }
+
+    ##########################33
+    /*
     if (!empty($razon_social_hidden) && !empty($nombre_contacto_hidden)) {  //Si los hidden CONTIENEN datos
         $stmt = mysqli_prepare($conn, 'SELECT * FROM clientes WHERE UPPER(razon_social) = UPPER(?) AND UPPER(contacto) = UPPER(?)');
         if (!$stmt) {
@@ -95,7 +158,7 @@ if(isset($_POST['eliminar'])){
             if (mysqli_stmt_execute($stmt_eliminar)) {
                 /*
                 header("Location: ../index.php#clientes");
-                exit;*/
+                exit;--/
                 header('Content-Type: application/json');
                 echo json_encode(array(
                     'status' => 'success',
@@ -181,10 +244,10 @@ if(isset($_POST['eliminar'])){
 
             mysqli_stmt_close($stmt_eliminar);
             
-        }*/
+        }--/
     }
 
-}
+}*/
 #########################################
 if(isset($_POST['guardar'])){
 

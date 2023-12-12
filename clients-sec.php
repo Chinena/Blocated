@@ -78,14 +78,13 @@ if ($_SESSION['rol'] == 'admin') {
         </div> 
         
         <div class="seccion-clientes">
-            <h1>Sección Clientes</h1> 
-
-            <div class="formulario" id="formulario" style="display: flex; justify-content: space-between;">
+            <!-- <h1>Sección Clientes</h1> -->
+            <div class="formulario" id="formulario"> <!-- style="display: flex; justify-content: space-between;"-->
             <form>
                 <br>
                 <fieldset style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
                 <legend class="clientes">Buscar cliente por:</legend>
-                <div style="margin-top: 6px;">
+                <div class="input-group" style="margin-top: 6px;">
                     <span class="clientes" style="margin: 4px 10px;">Nombre o Razon Social: </span>
                     <input type="text" id="searchClient" autocomplete="off" style="text-align: center; width:200px;">
                 </div>
@@ -113,11 +112,11 @@ if ($_SESSION['rol'] == 'admin') {
                     
                     <button class="searchButton" onclick="buscar_datos()">Buscar</button>-->
                 </fieldset>
-                <div id="respuesta"></div>
                 <br>
             </form>
+            <div id="respuesta"></div>
                 
-            <fieldset style="padding-bottom: 0;">
+            <fieldset id="mover" style="padding-bottom: 0;">
                 <legend class="clientes">Datos del cliente:</legend> 
                 <!-- 
                 <p class="comentario" style="text-align: right; margin-top: 0;">*Campos obligatorios</p>
@@ -125,41 +124,81 @@ if ($_SESSION['rol'] == 'admin') {
                 
                 <form method="POST" id="agregarCliente" action="scripts/clientes.php"> 
                     
-                    <div class="clientes-form">
-                        <div>
-                        <input type="hidden" id="razon_social_hidden" name="razon_social_hidden">
-                        <pre class="clientes">
-                            Razon Social: <input type="text" name="razon_social" id="razon_social" autocomplete="off" required /><br>
-                            RFC: <input type="text" name="rfc" id="rfc" autocomplete="off" maxlength="13" required  /><br>
-                            Email Factura: <br><input type="text" name="email_factura" id="email_factura" autocomplete="off" required /><br>
-                            Telefono Oficina: <input type="text" name="tel_Oficina" id="tel_Oficina" maxlength="10" autocomplete="off" /><br>
-                        </pre>
+                    <div class="clientes-form" style="margin-left: 2%;">
+                        <div class="clientes">
+                            <input type="hidden" id="razon_social_hidden" name="razon_social_hidden">
+
+                            <div class="input-group">
+                                <span>Razon Social: </span>
+                                <input type="text" name="razon_social" id="razon_social" autocomplete="off" required />
+                            </div>
+                            <div class="input-group">
+                                <span>RFC: </span>
+                                <input type="text" name="rfc" id="rfc" autocomplete="off" maxlength="13" required  />
+                            </div>
+                            <div class="input-group">
+                                <span>Email Factura: </span>
+                                <input type="text" name="email_factura" id="email_factura" autocomplete="off" required />
+                            </div>
+                            <div class="input-group">
+                                <span>Telefono Oficina: </span>
+                                <input type="text" name="tel_Oficina" id="tel_Oficina" maxlength="10" autocomplete="off" />
+                            </div>
+                            <div class="input-group">
+                                <span>Domicilio: </span>
+                                <input type="text" name="domicilio" id="domicilio" autocomplete="off" required />
+                            </div>
                         </div>
-                        <div>
+                        
+                        <div class="clientes"  style="margin-right: 5%;">
                         <input type="hidden" id="contacto_hidden" name="contacto_hidden">
-                        <pre class="clientes">
-                            Domicilio: <input type="text" name="domicilio" id="domicilio" autocomplete="off" required /><br>
+
+                            <div class="input-group">
+                                <span> Nombre Contacto: </span>
+                                <input type="text" name="contacto" id="contacto" autocomplete="off" required />
+                            </div>
+                            <div class="input-group">
+                                <span>Email Contacto: </span>
+                                <input type="text" name="email_contacto" id="email_contacto" autocomplete="off" /><br>
+                            </div>
+                            <div class="input-group">
+                                <span>Telefono Contacto: </span>
+                                <input type="text" name="tel_Contacto" id="tel_Contacto" maxlength="10" autocomplete="off" required />
+                            </div>
+                        </div>
+                    </div>
+                        <!--<pre class="clientes">
                             Nombre Contacto: <input type="text" name="contacto" id="contacto" autocomplete="off" required /><br>
                             Email Contacto: <input type="text" name="email_contacto" id="email_contacto" autocomplete="off" /><br>
                             Telefono Contacto: <input type="text" name="tel_Contacto" id="tel_Contacto" maxlength="10" autocomplete="off" required /><br><br>
-                        </pre>
-                        </div>
-                        <div id="infoAdicional"> 
-                        <pre class="clientes status-clients">
-                            Estatus Cliente: <input type="checkbox" value="1" name="activo" id="activeCheckbox" class="custom-checkbox" autocomplete="off" />Activo<br>
-                            Modalidad Pago:  <select name="pago" id="pago" autocomplete="off">
-                                            <option value="1">Tarjeta de crédito</option>
-                                            <option value="2">PayPal</option>
-                                            <option value="3">Efectivo</option>
-                                            </select><br>
-                            Plan:  <select name="plan" id="plan" autocomplete="off">
-                            <option value="1">Mensual</option>
-                            <option value="2">Si</option>
-                            <option value="3">Otro</option>
-                            </select> 
-                        </pre>   
-                        </div>
+                        </pre>-->
+                        
+                    <div id="infoAdicional" class="clientes-form"> 
+                        <div class="columna">
+                            <div class="clientes status-clients">
+                                Estatus Cliente: <input type="checkbox" value="1" name="activo" id="activeCheckbox" class="custom-checkbox" autocomplete="off" />Activo<br>
+                            </div> 
+                        </div> 
+                        <div class="columna">
+                            <div class="clientes">
+                                Modalidad Pago:  <br><select name="pago" id="pago" autocomplete="off">
+                                                <option value="1">Tarjeta de crédito</option>
+                                                <option value="2">PayPal</option>
+                                                <option value="3">Efectivo</option>
+                                                </select>
+                            </div> 
+                        </div> 
+                        <div class="columna">
+                            <div class="clientes">
+                                Plan:  <br><select name="plan" id="plan" autocomplete="off">
+                                <option value="1">Semanal</option>
+                                <option value="2">Mensual</option>
+                                <option value="3">Otro</option>
+                                </select> 
+                            </div>
+                        </div>   
                     </div>
+                    
                 </form>
             </fieldset>
 

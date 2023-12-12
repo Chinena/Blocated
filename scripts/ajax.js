@@ -4,6 +4,7 @@ $(document).ready(function () {
 });
 
 //Buscar Cliente
+/*
 function buscar_datos() {
     var razonSocial = $("#searchClient").val();
     //var nombreContacto = $("#ClientWithName").val();
@@ -97,7 +98,7 @@ function buscar_datos() {
             $("#ClientWithName").val("");
         }
     });
-}
+}*/
 
 
 // Manipulación con texto de Agregar - Actualizar
@@ -108,42 +109,26 @@ var botonAgregar = document.getElementById('button_agregar');
 
 // Función para actualizar el texto del botón
 function actualizarTextoBoton(text) {
-  botonAgregar.innerText = text ? 'Actualizar datos' : 'Agregar Cliente';
+    botonAgregar.innerText = text ? 'Actualizar datos' : 'Agregar Cliente';
 }
 
-/*document.getElementById('tu_boton_de_busqueda').addEventListener('click', function() {
+function buscar_datos() {
+    var razonSocial = $("#searchClient").val();
+    //var nombreContacto = $("#ClientWithName").val();
 
-    actualizarTextoBoton();
-
-});*/
-
-// Ahora, cuando buscas un cliente exitosamente, puedes llamar a esta función para cambiar temporalmente el texto del botón
-// Por ejemplo, después de una operación AJAX exitosa:
-// actualizarTextoBoton();
-
-/*
-document.getElementById('boton_eliminar').addEventListener('click', function () {
+    //Para los que están ocultos (para actualizar correctamente)
+    $("#razon_social_hidden").val(razonSocial);
+    //$("#contacto_hidden").val(nombreContacto);
     var razonSocialHidden = document.getElementById("razon_social_hidden").value;
-    var contactoHidden = document.getElementById("contacto_hidden").value;
+    //var contactoHidden = document.getElementById("contacto_hidden").value;
+    console.log(razonSocialHidden);
+    //console.log(contactoHidden);
 
     var parametros = {
-        "eliminar": "1",
-        "razon_social": $('#razon_social').val(),
-        "rfc": $('#rfc').val(),
-        "email_factura": $('#email_factura').val(),
-        "tel_Oficina": $('#tel_Oficina').val(),
-        "domicilio": $('#domicilio').val(),
-        "contacto": $('#contacto').val(),
-        "email_conctanto": $('#email_contacto').val(),
-        "tel_Contacto": $('#tel_Contacto').val(),
-        "activo": $('#activeCheckbox').is(':checked') ? 1 : 0,  // Valor del checkbox
-        "pago": $('#pago').val(),  // Valor del select de Modalidad Pago
-        "plan": $('#plan').val(),   // Valor del select de Plan
-
-        "razon_social_hidden": razonSocialHidden,
-        "contacto_hidden": contactoHidden
+        "buscar": "1",
+        "razon_social": razonSocial,
+        //"contacto": nombreContacto
     };
-
 
     $.ajax({
         data: parametros,
@@ -165,27 +150,97 @@ document.getElementById('boton_eliminar').addEventListener('click', function () 
             $('#formulario').show();
         },
         success: function (respuesta) {
-            if (respuesta.existe === "1") {
-                // Éxito al eliminar
+            $('#respuesta').html("");  // Limpiar el contenido anterior
+            //console.log(respuesta);
+            $('#boton_eliminar').hide();
+            actualizarTextoBoton(false);
+            var activo = respuesta.existe === 0 ? 0 : 1;
+
+            if (respuesta.existe === "0") {
+                // No se encontraron resultados
                 showPopup({
-                    title: 'Cliente eliminado',
-                    content: 'Se eliminaron los datos en la base de datos',
+                    title: 'Cliente no encontrado',
+                    content: 'No existe un cliente con la información proporcionada.',
                     showContinueButton: false,
                     showCancelButton: true
                 });
 
-                // Resto del código para limpiar los campos y realizar otras acciones después de eliminar
+                $("#razon_social").val("");
+                $("#razon_social").prop("disabled", false);
+                $("#rfc").val("");
+                $("#email_factura").val("");
+                $("#tel_Oficina").val("");
+                $("#domicilio").val("");
+                $("#contacto").val("");
+                $("#contacto").prop("disabled", false);
+                $("#email_contacto").val("");
+                $("#tel_Contacto").val("");
 
+                $("#activeCheckbox").prop("checked", activo == 0);
+                $("#pago").val("1");
+                $("#plan").val("1");
             } else {
-                // Error al eliminar
-                showPopup({
-                    title: 'Error',
-                    content: 'Error al eliminar el cliente: ' + respuesta.error,
-                    showContinueButton: false,
-                    showCancelButton: true
+                $('#boton_eliminar').show();
+                actualizarTextoBoton(true);
+
+                document.getElementById('mover').style.marginTop = '10px';  //Para el segundo fieldset
+
+                // Obtener los valores del objeto como un array
+                var clientes = Object.values(respuesta);
+
+                // Filtrar solo las entradas que contienen datos de clientes (no 'existe')
+                var clientesDatos = clientes.filter(function (cliente) {
+                    return typeof cliente === 'object';
                 });
 
-                // Resto del código para manejar el error
+                // Construir el listado de clientes
+                var listadoClientes = '<ul class="clientes cliente-item-centrado">';
+                clientesDatos.forEach(function (cliente, index) {
+                    var activo = cliente.activo !== undefined ? cliente.activo : 0;
+                    listadoClientes += '<li class="cliente-item" data-index="' + index + '">'
+                        + '<span class="grosor">Razón Social:</span> ' + cliente.razon_social
+                        + '&nbsp;&nbsp;&nbsp;<span class="grosor">Contacto:</span> ' + cliente.contacto
+                        + '</li>';
+                });
+                listadoClientes += '</ul>';
+
+                // Mostrar el listado en el div 'respuesta'
+                $('#respuesta').html(listadoClientes);
+
+                // Asignar un evento de clic a las filas de la tabla
+                $('.cliente-item').on('click', function () {
+                    var index = $(this).data('index');
+                    var clienteSeleccionado = clientesDatos[index];
+
+                    // Aquí puedes trabajar con el cliente seleccionado
+                    console.log(clienteSeleccionado);
+
+                    // Resto del código para asignar los valores del cliente...
+                    $("#razon_social").val(clienteSeleccionado.razon_social);
+                    //$("#razon_social").prop("disabled", true); 
+                    //$("#razon_social").prop("disabled", true);
+
+                    $("#rfc").val(clienteSeleccionado.rfc);
+                    $("#email_factura").val(clienteSeleccionado.email_factura);
+                    $("#tel_Oficina").val(clienteSeleccionado.tel_oficina);
+                    $("#domicilio").val(clienteSeleccionado.direccion);
+
+                    $("#contacto").val(clienteSeleccionado.contacto);
+                    //$("#contacto").prop("disabled", true);
+                    //$("#contacto").prop("disabled", true);
+
+                    $("#email_contacto").val(clienteSeleccionado.email_contacto);
+                    $("#tel_Contacto").val(clienteSeleccionado.tel_contacto);
+
+                    var activo = clienteSeleccionado.activo;
+                    $("#activeCheckbox").prop("checked", activo == 1);
+                    $("#pago").val(clienteSeleccionado.id_pago);
+                    $("#plan").val(clienteSeleccionado.id_plan);
+
+                    // Ocultar el listado después de seleccionar un cliente
+                    $('.cliente-item').parent().hide();
+
+                });
 
             }
             console.log(respuesta);
@@ -193,47 +248,4 @@ document.getElementById('boton_eliminar').addEventListener('click', function () 
             $("#ClientWithName").val("");
         }
     });
-
-});*/
-
-/*
-function guardar_cliente() {
-    var parametros = {
-        "guardar": "1", 
-        "razon_social": $("#razon_social").val(),
-        "rfc": $("#rfc").val(),
-        "email_factura": $("#email_factura").val(),
-        "tel_oficina": $("#tel_Oficina").val(),
-        "domicilio": $("#domicilio").val(),
-        "contacto": $("#contacto").val(),
-        "email_contacto": $("#email_contacto").val(),
-        "tel_Contacto": $("#email_Contacto").val(),
-        "activo": $("#activeCheckbox").val(),
-        "pago": $("#pago").val(),
-        "plan": $("#plan").val()
-      };
-
-      $.ajax({
-        data: parametros,
-        dataType: 'json',
-        url: 'scripts/bd_clientes.php',
-        type: 'post',
-    
-        beforeSend: function () {
-          //$('#respuesta').html("");
-            $('#formulario').hide();
-            $('#cargando').show();
-        },
-        error: function () {
-            console.log('Ocurrió un error...');
-        },
-        complete: function(){
-            // Mostrar formulario y ocultar spinner después de la llamada AJAX
-            $('#cargando').hide();
-            $('#formulario').show();
-        },
-        success: function (respuesta) {
-            console.log(respuesta);
-        }
-      });
-}*/
+}

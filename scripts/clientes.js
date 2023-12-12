@@ -53,7 +53,7 @@ function validarFormulario() {
     // Verificar si el elemento es un campo de entrada de texto
     if (elemento.type === 'text' || elemento.type === 'textarea') {
       // Verificar si el campo es obligatorio y está vacío
-      if (elemento.required) { //if (elemento.required && (elemento.value.trim() === '' || /^\s*$/.test(elemento.value))) {
+      if (elemento.required && elemento.value.trim() === '') { //if (elemento.required && (elemento.value.trim() === '' || /^\s*$/.test(elemento.value))) {
         //closePopup();
         showPopup({
           title: 'Error de validación',
@@ -65,7 +65,6 @@ function validarFormulario() {
 
       }
     }
-
 
     //Respetar mayusculas y minusculas para email
     if (!elemento.name.includes('email')) {
@@ -228,6 +227,8 @@ document.getElementById('boton_limpiar').addEventListener('click', function () {
       elemento.selectedIndex = 0; // Restablecer el valor seleccionado del campo select al valor predeterminado
     }
   }
+
+  document.getElementById('respuesta').innerHTML = '';
   actualizarTextoBoton(false);
   $('#boton_eliminar').show();
   $('#boton_eliminar').hide();
@@ -249,17 +250,17 @@ document.getElementById('boton_eliminar').addEventListener('click', function () 
 });
 
 function eliminar_cliente() {
-  var razonSocialHidden = document.getElementById("razon_social_hidden").value;
-  var contactoHidden = document.getElementById("contacto_hidden").value;
+  //var razonSocialHidden = document.getElementById("razon_social_hidden").value;
+  //var contactoHidden = document.getElementById("contacto_hidden").value;
 
   var parametros = {
     "eliminar": "1",
-    "razon_social": $('#razon_social').val(),
+    "razon_social": $('#razon_social').val(),/*
     "rfc": $('#rfc').val(),
     "email_factura": $('#email_factura').val(),
     "tel_Oficina": $('#tel_Oficina').val(),
-    "domicilio": $('#domicilio').val(),
-    "contacto": $('#contacto').val(),
+    "domicilio": $('#domicilio').val(),*/
+    "contacto": $('#contacto').val()/*,
     "email_conctanto": $('#email_contacto').val(),
     "tel_Contacto": $('#tel_Contacto').val(),
     "activo": $('#activeCheckbox').is(':checked') ? 1 : 0,  // Valor del checkbox
@@ -267,7 +268,7 @@ function eliminar_cliente() {
     "plan": $('#plan').val(),   // Valor del select de Plan
 
     "razon_social_hidden": razonSocialHidden,
-    "contacto_hidden": contactoHidden
+    "contacto_hidden": contactoHidden*/
   };
 
   $('#formulario').hide();
@@ -335,6 +336,20 @@ function eliminar_cliente() {
         });
 
         // Resto del código para manejar el error
+        $("#razon_social").val("");
+        $("#razon_social").prop("disabled", false);
+        $("#rfc").val("");
+        $("#email_factura").val("");
+        $("#tel_Oficina").val("");
+        $("#domicilio").val("");
+        $("#contacto").val("");
+        $("#contacto").prop("disabled", false);
+        $("#email_contacto").val("");
+        $("#tel_Contacto").val("");
+
+        $("#activeCheckbox").prop("checked", false);
+        $("#pago").val("1");
+        $("#plan").val("1");
       }
       /*if (respuesta.existe === "1") {
           // Éxito al eliminar

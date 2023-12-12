@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
      // Campos ocultos
      $razon_social_hidden = isset($_POST['razon_social_hidden']) ? mysqli_real_escape_string($conn, $_POST['razon_social_hidden']) : '';
-     $nombre_contacto_hidden = isset($_POST['contacto_hidden']) ? mysqli_real_escape_string($conn, $_POST['contacto_hidden']) : '';
+     #$nombre_contacto_hidden = isset($_POST['contacto_hidden']) ? mysqli_real_escape_string($conn, $_POST['contacto_hidden']) : '';
     
     $pago = mysqli_real_escape_string($conn, $_POST['pago']);
     $plan = mysqli_real_escape_string($conn, $_POST['plan']);

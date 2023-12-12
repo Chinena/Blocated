@@ -80,9 +80,6 @@ h2 {
 
 
 /* Barra de Navegacion */
-img {
-  /*background-color: white;*/
-}
 
 .img-fondo {
   border-radius: 3px;
@@ -171,6 +168,11 @@ a:hover {
   font-size: 12px;
   font-weight: 900;
   /* posiblemente se cambie de lugar al html */
+}
+
+.clientes span {
+  margin: 4px 10px;
+  vertical-align: middle;
 }
 
 input {
@@ -434,6 +436,29 @@ button {
       cursor: pointer;
   }*/
 
+.cliente-item{
+  cursor: pointer;
+  margin: 10px; /* Ajusta según sea necesario */
+  padding: 10px;
+  background-color: #f0f0f0; /* Color de fondo de cada elemento, ajusta según sea necesario */
+  border-radius: 5px;
+}
+
+.cliente-item:hover {
+  background-color: #005E7D;
+}
+
+.cliente-item-centrado {
+  list-style-type: none; 
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.grosor {
+  font-size: 14px;
+  font-weight: bold;
+}
+
 .searchButton {
   float: none;
   margin-top: 8px;
@@ -445,7 +470,7 @@ button {
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.8);
   justify-content: center;
-  height: 80vh;
+  /*height: 80vh;*/
   width: 80%;
   margin: auto;
   border-radius: 0.3em;
@@ -477,16 +502,30 @@ fieldset {
   justify-content: space-between;
 }
 
+.input-group {
+  display: flex;
+  align-items: center;
+  flex: 0 0 40%;
+}
+
+.columna {
+  margin-top: 2%;
+  flex: 0 0 30%;
+  margin-left: 3%;
+}
+
+
+/*
 .clientes-form div {
   flex: 1;
   width: 10px;
-  /*margin-right: 2%;*/
+  /*margin-right: 2%;--/
 }
 
 .clientes-form div:last-child {
   margin-bottom: 0;
   width: 100%;
-}
+}*/
 
 .status-clients {
   text-align: left;
@@ -665,7 +704,7 @@ tbody tr:last-child td {
   margin-top: 20%;
 }
 
-.logout{
+.logout {
   font-size: 8px;
 }
 
@@ -766,6 +805,6 @@ tbody tr:last-child td {
 }
 
 .input-group button {
-    margin-left: 10px;
-  
+  margin-left: 10px;
+
 }
