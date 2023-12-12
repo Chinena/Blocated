@@ -68,6 +68,7 @@ if ($_SESSION['rol'] == 'admin') {
 
   <!-- Hoja de estilos -->
   <link href="assets/styles/styles.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   
 </head>
@@ -75,28 +76,25 @@ if ($_SESSION['rol'] == 'admin') {
 
   <!-- Barra de Navegacion -->
   <div class="navbar-logo header fixed-header">
-    <img src="assets/images/logo-fondoblanco.jpeg" layout="responsive" width="190" height="50" alt="Logo Ubicuo" class="mobirise-loader img-fondo" /> 
+    <img src="assets/images/logo-fondoblanco.jpeg" layout="responsive" width="180" height="45" alt="Logo Ubicuo" class="mobirise-loader img-fondo" /> 
     <nav>
-      <ul>
-        <li><a href="index.php">I N I C I O</a></li>
-        <li><a href="clients-sec.php">C L I E N T E S</a></li>
-        <li><a href="recargas-sec.php">R E C A R G A S</a></li>
-        <li><a href="scripts/cerrar-s.php" class="logout">CERRAR SESIÓN</a></li>
-        
-      </ul>
+        <ul>
+            <li><a href="index.php">I N I C I O</a></li>
+            <li><a href="clients-sec.php">C L I E N T E S</a></li>
+            <li><a href="recargas-sec.php">R E C A R G A S</a></li>
+            <li><a href="scripts/cerrar-s.php" class="logout"><i class="fas fa-sign-out-alt" style="color: red;"></i></a></li>
+        </ul>
     </nav>
-  </div>
-    
-  <!-- Contenido -->
+</div>
+
     <!-- Inicio -->
   <section id="inicio">
-    <div class="seccion-inicio">
-      <h1>Control de Recargas Diarias</h1>
+    <div>
       <p class ="p-fecha" id="fecha"></p>
       
       <div class="titulo-container">
         <h2 style="margin-left: 12%;">Hay <?php echo count($datosCaducidadRecargas); ?> chips que expiran hoy</h2>
-        <h2 style="margin-right: 6%;">Previsión de recargas para los siguientes días</h2>
+        <h2 style="margin-right: 8%;">Previsión de recargas para los siguientes días</h2>
       </div>
       <div>
       <!--<button>Procesar</button>-->

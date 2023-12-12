@@ -95,6 +95,8 @@ $conn->close();
 
         <!-- Hoja de estilos -->
         <link href="assets/styles/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
         
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="recargas.js"></script>
@@ -103,19 +105,18 @@ $conn->close();
     <body>
         <!-- Barra de Navegacion -->
         <div class="navbar-logo header fixed-header">
-            <img src="assets/images/logo.png" layout="responsive" width="211.76470588235293" height="60" alt="Logo Ubicuo" class="mobirise-loader img-fondo" /> 
+            <img src="assets/images/logo-fondoblanco.jpeg" layout="responsive" width="180" height="45" alt="Logo Ubicuo" class="mobirise-loader img-fondo" /> 
             <nav>
                 <ul>
-                    <li><a href="index.php" >I N I C I O</a></li>
-                    <li><a href="clients-sec.php" >C L I E N T E S</a></li>
-                    <li><a href="recargas-sec.php" >R E C A R G A S</a></li>
-                    <li><a href="scripts/cerrar-s.php" class="logout">CERRAR SESIÓN</a></li>
+                    <li><a href="index.php">I N I C I O</a></li>
+                    <li><a href="clients-sec.php">C L I E N T E S</a></li>
+                    <li><a href="recargas-sec.php">R E C A R G A S</a></li>
+                    <li><a href="scripts/cerrar-s.php" class="logout"><i class="fas fa-sign-out-alt" style="color: red;"></i></a></li>
                 </ul>
             </nav>
         </div>
 
         <div class="seccion-recargas">
-            <h1>Sección Recargas</h1> 
 
             <div class="contenido-recargas">
                 <div class="buscador">
@@ -128,7 +129,6 @@ $conn->close();
                     </div>
                 </div>
 
-                <!-- Resto del contenido de recargas-sec.php -->
                 <div class="info-recargas">
                     <div class="text-over-box">
                         <a>Chip</a>
@@ -150,7 +150,7 @@ $conn->close();
                         <input type="date" id="fechaCaducado" value="" style="color: grey; text-align: center;" readonly disabled />
                     </div>
                 </div>
-                <!-- Fin del resto del contenido -->
+              
             </div>        
         </div>
 
