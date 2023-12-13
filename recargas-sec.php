@@ -67,10 +67,16 @@ if ($resultado->num_rows > 0) {
         // Si no es una solicitud AJAX, imprime los resultados para depuración
         var_dump($fila);
     }
+} else {
+    // Si no se encontraron resultados, devolver una respuesta JSON vacía
+    header('Content-Type: application/json');
+    echo json_encode(null);
+    exit;
 }
 
 // Cerrar la conexión a la base de datos
 $conn->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -119,43 +125,54 @@ $conn->close();
         </div>
 
         <div class="seccion-recargas">
-
-            <div class="contenido-recargas">
-                <div class="buscador">
-                    <div class="text-over-box">
-                        <a>Nombre del Equipo</a>
-                        <div class="input-group">
-                            <input type="text" id="equipo" />
-                            <button class="submit-button">Buscar</button>
-                        </div>
+        <div class="contenido-recargas">
+            <div class="buscador">
+                <div class="text-over-box">
+                    <a>Nombre del Equipo</a>
+                    <div class="input-group">
+                        <input type="text" id="equipo" />
+                        <button class="submit-button">Buscar</button>
                     </div>
                 </div>
+            </div>
 
-                <div class="info-recargas">
-                    <div class="text-over-box">
-                        <a>Chip</a>
-                        <input type="text" id="simNumber" value="" readonly disabled />
-                    </div>
-                    <div class="text-over-box">
-                        <a>Activo</a>
-                        <input type="text" id="active" value="" readonly disabled />
-                    </div>
+            <div class="info-recargas">
+                <div class="text-over-box">
+                    <a>Chip</a>
+                    <input type="text" id="simNumber" value="" readonly disabled />
                 </div>
+                <div class="text-over-box">
+                    <a>Activo</a>
+                    <input type="text" id="active" value="" readonly disabled />
+                </div>
+            </div>
 
-                <div class="info-recargas">
-                    <div class="text-over-box">
-                        <a>Fecha de Recarga</a>
-                        <input type="date" id="fechaRecarga" value="" style="color: grey; text-align: center;" readonly disabled />
-                    </div>
-                    <div class="text-over-box">
-                        <a>Fecha de Caducidad</a>
-                        <input type="date" id="fechaCaducado" value="" style="color: grey; text-align: center;" readonly disabled />
-                    </div>
+            <div class="info-recargas">
+                <div class="text-over-box">
+                    <a>Fecha de Recarga</a>
+                    <input type="date" id="fechaRecarga" value="" style="color: grey; text-align: center;" readonly disabled />
                 </div>
-              
-            </div>        
+                <div class="text-over-box">
+                    <a>Fecha de Caducidad</a>
+                    <input type="date" id="fechaCaducado" value="" style="color: grey; text-align: center;" readonly disabled />
+                </div>
+            </div>
+        </div>        
+    </div>
+
+    <!-- Pop-up -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close-button" onclick="closePopup()">&times;</span>
+            <h1 id="popup-title"></h1>
+            <p id="popup-message"></p>
+            <button class="continue-button">Continuar</button>
+            <button class="cancel-button">Cancelar</button>
         </div>
+    </div>
 
-        <script src="scripts\recargas.js"></script>
-    </body>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="scripts/recargas.js"></script>
+</body>
 </html>
