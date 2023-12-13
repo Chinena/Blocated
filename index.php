@@ -206,6 +206,7 @@ if ($_SESSION['rol'] == 'admin') {
       const exporter = new TableCSVExporter(dataTable); //se añade ', false' en los parametros si no quieres encabezados
       const csvOutput = exporter.convertToCSV();
       const csvBlob = new Blob([csvOutput], {type: "text/csv"});
+      
       const blobUrl = URL.createObjectURL(csvBlob);
 
       const currentDate = new Date().toISOString().split('T')[0];

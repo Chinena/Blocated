@@ -596,7 +596,7 @@ table {
   /* Para unir los bordes de las celdas */
   width: 100%;
   border-radius: 1px;
-  background-color: lightgrey;
+  background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.50), 4px 4px 6px rgba(0, 0, 0, 0.5);
 }
 
@@ -612,6 +612,7 @@ th {
 
 td {
   font-family: 'Raleway', sans-serif;
+  border-right: 2px solid #005E7D;
 }
 
 th,
@@ -622,8 +623,12 @@ td {
   padding-bottom: 2px;
   text-align: center;
   /* puede ser necesario que el contenido de la tabla no sea en el centro*/
-  border-bottom: 1px solid #005E7D;
+  border-bottom: 1px solid #43bde59c;
   /*#CC3636;*/
+}
+
+td:last-child {
+  border-right: none; /* Elimina el borde derecho en la última celda de cada fila */
 }
 
 tbody tr:last-child td {
