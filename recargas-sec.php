@@ -108,6 +108,8 @@ $conn->close();
 
         
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 
     </head>
     <body>
@@ -125,54 +127,70 @@ $conn->close();
         </div>
 
         <div class="seccion-recargas">
-        <div class="contenido-recargas">
-            <div class="buscador">
-                <div class="text-over-box">
-                    <a>Nombre del Equipo</a>
-                    <div class="input-group">
-                        <input type="text" id="equipo" />
-                        <button class="submit-button">Buscar</button>
+            <div class="contenido-recargas">
+                <div class="buscador">
+                    <div class="text-over-box">
+                        <a>Nombre del Equipo</a>
+                        <div class="input-group">
+                            <input type="text" id="equipo" autocomplete="off" />
+                            <button class="submit-button">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-recargas">
+                    <div class="text-over-box">
+                        <a>Chip</a>
+                        <input type="text" id="simNumber" value="" readonly disabled />
+                    </div>
+                    <div class="text-over-box">
+                        <a>Activo</a>
+                        <input type="text" id="active" value="" readonly disabled />
+                    </div>
+                </div>
+
+                <div class="info-recargas">
+                    <div class="text-over-box">
+                        <a>Fecha de Recarga</a>
+                        <input type="date" id="fechaRecarga" value="" style="color: grey; text-align: center;" readonly disabled />
+                    </div>
+                    <div class="text-over-box">
+                        <a>Fecha de Caducidad</a>
+                        <input type="date" id="fechaCaducado" value="" style="color: grey; text-align: center;" readonly disabled />
                     </div>
                 </div>
             </div>
-
-            <div class="info-recargas">
-                <div class="text-over-box">
-                    <a>Chip</a>
-                    <input type="text" id="simNumber" value="" readonly disabled />
-                </div>
-                <div class="text-over-box">
-                    <a>Activo</a>
-                    <input type="text" id="active" value="" readonly disabled />
-                </div>
-            </div>
-
-            <div class="info-recargas">
-                <div class="text-over-box">
-                    <a>Fecha de Recarga</a>
-                    <input type="date" id="fechaRecarga" value="" style="color: grey; text-align: center;" readonly disabled />
-                </div>
-                <div class="text-over-box">
-                    <a>Fecha de Caducidad</a>
-                    <input type="date" id="fechaCaducado" value="" style="color: grey; text-align: center;" readonly disabled />
-                </div>
-            </div>
-        </div>        
-    </div>
-
-    <!-- Pop-up -->
-    <div class="popup" id="popup">
-        <div class="popup-content">
-            <span class="close-button" onclick="closePopup()">&times;</span>
-            <h1 id="popup-title"></h1>
-            <p id="popup-message"></p>
-            <button class="continue-button">Continuar</button>
-            <button class="cancel-button">Cancelar</button>
+    
         </div>
-    </div>
+        <div style="margin-top: 20px; text-align: center;">
+                <h2>REGISTRAR RECARGA</h2>
+                <br>     
+                <span>Recargar <span>
+                <select id="monto" name="monto" style="margin-right: 10px; vertical-align: middle;">
+                        <option value="10">$10</option>
+                        <option value="20">$20 </option>
+                        <option value="30">$30 </option>
+                        <option value="50">$50 </option>
+                    </select>
+                <span>al</span>
+                <input type="text" id="numeroChipPlaceholder" value="" readonly disabled style="margin-left: 10px; vertical-align: middle;" />
+            </div>
+        <!-- Pop-up -->
+        <div class="popup" id="popup">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup()">&times;</span>
+                <h1 id="popup-title"></h1>
+                <p id="popup-message"></p>
+                <button class="continue-button">Continuar</button>
+                <button class="cancel-button">Cancelar</button>
+            </div>
+        </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="scripts/recargas.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="scripts/recargas.js"></script>
+
+    
 </body>
 </html>
