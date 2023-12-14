@@ -127,7 +127,7 @@ $conn->close();
 
         <div class="seccion-recargas">
             <div class="contenido-recargas">
-                <div class="buscador">
+                <div class="buscador" id="BuscadorFormulario">
                     <div class="text-over-box">
                         <a>Nombre del Equipo</a>
                         <div class="input-group">
