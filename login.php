@@ -30,7 +30,7 @@
     <div class="panel-login"> 
         <main class="form-signin w-100 m-auto">
             <form action="./scripts/inicio-s.php" method="POST">
-                <h1 class="h1-login">Control de Recargas Blocated</h1>
+                <h1 class="h1-login">Control de Recargas bLocated</h1>
                 <img src="assets/images/logo blocated.png" width="90" height="90" class="icon-login" alt="logo" draggable="false">
 
                 <div class="user-container">
@@ -66,7 +66,7 @@
         eyeOpenIcon.style.display = type === 'password' ? 'inline' : 'none';
         eyeClosedIcon.style.display = type === 'password' ? 'none' : 'inline';
     }
-
+    /*
     function alertSession(config) {
         var popup = document.getElementById('popup');
         var popupTitle = document.getElementById('popup-title');
@@ -89,7 +89,7 @@
 
     function closeAlertSession() {
         document.querySelector('.popup').style.display = 'none';
-    }
+    }*/
 
     </script>
 

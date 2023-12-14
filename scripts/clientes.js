@@ -57,7 +57,7 @@ function validarFormulario() {
         //closePopup();
         showPopup({
           title: 'Error de validación',
-          content: 'No todos los datos están validados. Asegúrese de completar los campos obligatorios.',
+          content: 'No todos los datos están validados. Asegúrese de completar los campos en rojo.',
           showContinueButton: false,
           showCancelButton: true
         });
@@ -72,10 +72,10 @@ function validarFormulario() {
     } else {
       // Restriccion de contener "@"
       const emailRestriccion = /@/;
-      if (!emailRestriccion.test(elemento.value)) {
+      if (!emailRestriccion.test(elemento.value) && elemento.required) {
         showPopup({
           title: 'Error de validación',
-          content: 'Verifique que su cuenta de correo sea correcto.',
+          content: 'Verifique que los campos en rojo sean correctos.',
           showContinueButton: false,
           showCancelButton: true
         });
@@ -104,10 +104,69 @@ function validarFormulario() {
     }
 
     // Verificar si el campo es un campo de teléfono y si su valor no es numérico
-    if (elemento.name.includes('tel') && !/^\d+$/.test(elemento.value)) {
+    if (elemento.name.includes('tel') && !/^\d+$/.test(elemento.value) && elemento.required) {
       showPopup({
         title: 'Error de validación',
-        content: 'El campo de teléfono debe contener solo números.',
+        content: 'Verifique que los campos en rojo sean correctos.',
+        showContinueButton: false,
+        showCancelButton: true
+      });
+      //return false; // Evitar el envío del formulario si la validación falla
+      // Cambiar el estilo del campo con error
+      elemento.style.border = '2px solid red';
+      elemento.classList.add('error-pulsating');
+
+      contieneError = true; // Indicar que hay errores
+      //resaltarCamposConError(); // Llamar a la función para resaltar campos
+
+      // Programar una reversión de estilos después de un breve retraso (por ejemplo, 1 segundo)
+      setTimeout((function (elemento) {
+        return function () {
+          // Restaurar el estilo del campo y quitar la clase de animación después del retraso
+          elemento.style.border = '';
+          elemento.classList.remove('error-pulsating');
+          elemento.classList.add('puff');
+        };
+      })(elemento), 2000);
+    } else {
+      // Restaurar el estilo del campo si no hay error
+      elemento.style.border = '';
+      elemento.classList.remove('error-pulsating');
+    }
+
+    //10 digitos para el Celular
+    const maxCel = 10;
+    if (elemento.name.includes('tel') && elemento.required && elemento.value.length !== maxCel) {
+      showPopup({
+        title: 'Error de validación',
+        content: 'Asegurese que la cantidad de digitos del celular sea correcto.',
+        showContinueButton: false,
+        showCancelButton: true
+      });
+      elemento.classList.add('error-email');
+      contieneError = true; // Indicar que hay errores
+
+      setTimeout((function (elemento) {
+        return function () {
+          // Restaurar el estilo del campo y quitar la clase de animación después del retraso
+          elemento.style.border = '';
+          elemento.classList.remove('error-email');
+          elemento.classList.add('puff');
+        }
+      })(elemento), 2000);
+
+    } else {
+      // Restaurar el estilo del campo si no hay error
+      elemento.style.border = '';
+      elemento.classList.remove('error-email');
+    }
+
+    //13 digitos para RFC
+    const maxRFC = 13;
+    if (elemento.name.includes('rfc') && elemento.value.length !== maxRFC) {
+      showPopup({
+        title: 'Error de validación',
+        content: 'Asegurese que la cantidad de caracteres del RFC sea correcto.',
         showContinueButton: false,
         showCancelButton: true
       });
@@ -250,25 +309,10 @@ document.getElementById('boton_eliminar').addEventListener('click', function () 
 });
 
 function eliminar_cliente() {
-  //var razonSocialHidden = document.getElementById("razon_social_hidden").value;
-  //var contactoHidden = document.getElementById("contacto_hidden").value;
-
   var parametros = {
     "eliminar": "1",
-    "razon_social": $('#razon_social').val(),/*
-    "rfc": $('#rfc').val(),
-    "email_factura": $('#email_factura').val(),
-    "tel_Oficina": $('#tel_Oficina').val(),
-    "domicilio": $('#domicilio').val(),*/
-    "contacto": $('#contacto').val()/*,
-    "email_conctanto": $('#email_contacto').val(),
-    "tel_Contacto": $('#tel_Contacto').val(),
-    "activo": $('#activeCheckbox').is(':checked') ? 1 : 0,  // Valor del checkbox
-    "pago": $('#pago').val(),  // Valor del select de Modalidad Pago
-    "plan": $('#plan').val(),   // Valor del select de Plan
-
-    "razon_social_hidden": razonSocialHidden,
-    "contacto_hidden": contactoHidden*/
+    "razon_social": $('#razon_social').val(),
+    "contacto": $('#contacto').val()
   };
 
   $('#formulario').hide();
@@ -335,7 +379,6 @@ function eliminar_cliente() {
           showCancelButton: true
         });
 
-        // Resto del código para manejar el error
         $("#razon_social").val("");
         $("#razon_social").prop("disabled", false);
         $("#rfc").val("");
@@ -351,29 +394,6 @@ function eliminar_cliente() {
         $("#pago").val("1");
         $("#plan").val("1");
       }
-      /*if (respuesta.existe === "1") {
-          // Éxito al eliminar
-          showPopup({
-              title: 'Cliente eliminado',
-              content: 'Se eliminaron los datos en la base de datos',
-              showContinueButton: false,
-              showCancelButton: true
-          });
-
-          // Resto del código para limpiar los campos y realizar otras acciones después de eliminar
-
-      } else {
-          // Error al eliminar
-          showPopup({
-              title: 'Error al eliminar',
-              content: 'Error al eliminar el cliente',
-              showContinueButton: false,
-              showCancelButton: true
-          });
-
-          // Resto del código para manejar el error
-
-      }*/
       console.log(respuesta);
       $("#searchClient").val("");
       $("#ClientWithName").val("");

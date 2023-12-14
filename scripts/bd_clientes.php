@@ -1,25 +1,22 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
 require('../config.php');
 
 if(isset($_POST['buscar'])){
-    #$razon_social = $_POST['razon_social'];
-    #$nombre_contacto = $_POST['nombre_contacto'];
     $razon_social = mysqli_real_escape_string($conn, $_POST['razon_social']);
-    //$nombre_contacto = mysqli_real_escape_string($conn, $_POST['contacto']);
-
     $cliente = array();
     $cliente['existe'] = "0";
 
-    $stmt = mysqli_prepare($conn, 'SELECT * FROM clientes WHERE UPPER(razon_social) = UPPER(?) OR UPPER(contacto) = UPPER(?)');
+    //$stmt = mysqli_prepare($conn, 'SELECT * FROM clientes WHERE UPPER(razon_social) = UPPER(?) OR UPPER(contacto) = UPPER(?)');
+    $stmt = mysqli_prepare($conn, 'SELECT * FROM clientes WHERE UPPER(razon_social) LIKE UPPER(?) OR UPPER(contacto) LIKE UPPER(?)');
 
     if (!$stmt) {
         die('Error en la preparación de la consulta.');    # . mysqli_error($conn));
     }
 
-    mysqli_stmt_bind_param($stmt, 'ss', $razon_social, $razon_social);
+    $nombre = "%$razon_social%";
+    mysqli_stmt_bind_param($stmt, 'ss', $nombre, $nombre);
 
     if (!mysqli_stmt_execute($stmt)) {
         die('Error al ejecutar la consulta.');  # . mysqli_stmt_error($stmt));
@@ -39,7 +36,6 @@ if(isset($_POST['buscar'])){
     echo $resultado;
 
     mysqli_stmt_close($stmt);
-
 }
 ########################################
 if(isset($_POST['eliminar'])){
