@@ -575,8 +575,8 @@ fieldset {
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
   margin: auto;
-  margin-right: 10%;
-  
+  padding-right: 10%;
+  margin-right: 0%;  
 }
 
 #divTabla2 {
@@ -588,15 +588,15 @@ fieldset {
   /* Ajusta el ancho según tus necesidades */
   float: right;
   /* Hace que el div flote hacia la izquierda */
-  margin-right: 4%;
+  margin-right: 35%;
 }
 
 table {
   border-collapse: collapse;
   /* Para unir los bordes de las celdas */
   width: 100%;
-  border-radius: 1px;
-  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  background-color: #E0E0E0; /*rgba(255, 255, 255, 0.5);*/
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.50), 4px 4px 6px rgba(0, 0, 0, 0.5);
 }
 
@@ -606,13 +606,13 @@ table {
 }
 
 th {
-  background-color: #005E7D;
-  color: white;
+  /*background-color: #005E7D;*/
+  color: black;
 }
 
 td {
   font-family: 'Raleway', sans-serif;
-  border-right: 2px solid #005E7D;
+  /*border-right: 2px solid #005E7D;*/
 }
 
 th,
@@ -623,7 +623,7 @@ td {
   padding-bottom: 2px;
   text-align: center;
   /* puede ser necesario que el contenido de la tabla no sea en el centro*/
-  border-bottom: 1px solid #43bde59c;
+  border-bottom: 1px solid #b7b4b4;
   /*#CC3636;*/
 }
 
@@ -639,24 +639,30 @@ tbody tr:last-child td {
 .titulo-container {
   margin-top: 20px;
   display: flex;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
   /*margin: 0 10%; /* Ajusta el margen según tu diseño */
 }
 
 .export-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 10%;
+  align-items: left;
+  margin-top: 2%;
 }
 
 .column {
-  flex: 2; /* Ajusta el valor según tus necesidades */
+  flex: 0.8; /* Ajusta el valor según tus necesidades */
   padding: 10px;
+  margin-left: 0;
 }
 
 .column.small {
-  flex: 0.5; /* Puedes ajustar este valor según tus necesidades */
+  flex: 0.1;
+}
+
+.column2 {
+  flex: 1;
+  text-align: right;
 }
 
 /*Login*/

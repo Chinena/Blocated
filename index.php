@@ -93,7 +93,7 @@ if ($_SESSION['rol'] == 'admin') {
       <p class ="p-fecha" id="fecha"></p>
       <div class="titulo-container">
         <div class="column">
-        <h2 style="margin-left: 20%; font-weight: 300; font-family: 'Raleway', sans-serif;">Hay <span class="grosor" style="color: #005E7D; font-family: 'Raleway', sans-serif;"><?php echo count($datosCaducidadRecargas); ?></span> chips que expiran hoy</h2>
+        <h2 style="margin-left: 20%; font-weight: 600;">Hay <span class="grosor" style="color: red; font-family: 'Raleway', sans-serif;"><?php echo count($datosCaducidadRecargas); ?></span> chips que expiran hoy</h2>
         <!--<h2 style="margin-right: 8%;">Previsión de recargas para los siguientes días</h2>-->
 
         <div id="divTabla">
@@ -123,12 +123,40 @@ if ($_SESSION['rol'] == 'admin') {
         </div>
 
         </div>
-        <div class="column small export-container">
+        <div class="export-container small">
           <h2>Recarga Masiva</h2>
           <button id="btn-export" type="button" class="button export">Exportar CSV</button>
         </div>
-        <div class="column">
-          <h2 style="text-align: center;">Grafica</h2>
+        <div class="column2" style="float: rigth;">
+          <!--<h2 style="text-align: center;">Grafica</h2>-->
+          <h2 style="margin-right: 8%;">Previsión de recargas para los siguientes días</h2>
+          <div id="divTabla2">
+          <div class="table-margin-bottom">
+            <table>
+              <thead>
+                  <tr class="grosor">
+                    <th>Fecha de Vencimiento</th>
+                    <th>Chips $10</th>
+                    <th>Monto Total</th>
+                    <th>Chips $50</th>
+                    <th>Monto Total</th>
+                  </tr>
+              </thead>
+              <!--<tbody id="tbody2">-->
+              <tbody>
+                  <?php foreach ($datosCaducidadTomorrow as $dato): ?>
+                    <tr>
+                      <td><?php echo $dato['FECHA_CADUCADO']; ?></td>
+                      <td><?php echo $dato['CANTIDAD_CLIENTES_10']; ?></td>
+                      <td>$ <?php echo $dato['MONTO_TOTAL_10']; ?></td>
+                      <td><?php echo $dato['CANTIDAD_CLIENTES_50']; ?></td>
+                      <td>$ <?php echo $dato['MONTO_TOTAL_50']; ?></td>
+                    </tr>
+                  <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
+          </div>
         </div>
       </div>
     </div>
@@ -203,10 +231,10 @@ if ($_SESSION['rol'] == 'admin') {
     const btnExportToCsv = document.getElementById('btn-export');
 
     btnExportToCsv.addEventListener("click", () => {
-      const exporter = new TableCSVExporter(dataTable); //se añade ', false' en los parametros si no quieres encabezados
+      const exporter = new TableCSVExporter(dataTable, false); //se añade ', false' en los parametros si no quieres encabezados
       const csvOutput = exporter.convertToCSV();
       const csvBlob = new Blob([csvOutput], {type: "text/csv"});
-      
+
       const blobUrl = URL.createObjectURL(csvBlob);
 
       const currentDate = new Date().toISOString().split('T')[0];
