@@ -862,3 +862,26 @@ tbody tr:last-child td {
   margin-left: 10px;
 
 }
+.registro-recarga {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.registro-recarga h2 {
+  margin-bottom: 10px;
+}
+
+.registro-recarga span {
+  margin-right: 10px;
+}
+
+#monto {
+  margin-right: 10px;
+}
+
+#numeroChipPlaceholder {
+  margin-left: 10px;
+}

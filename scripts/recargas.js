@@ -102,3 +102,70 @@ $(document).ready(function () {
         });
     }
 });
+
+
+$("#recargarBtn").click(function () {
+    // Obtener datos necesarios
+    var simNumber = $("#simNumber").val();
+    var montoRecarga = $("#monto").val();
+
+    // Calcular días adicionales según el monto
+    var diasRecarga = calcularDiasRecarga(montoRecarga);
+
+    // Obtener fecha actual y fecha de caducidad
+    var fechaActual = obtenerFechaActual();
+    var fechaCaducidad = sumarDias(fechaActual, diasRecarga);
+
+    // Realizar la actualización en la base de datos
+    $.ajax({
+        type: "POST",
+        url: "/scripts/actualizar-recarga.php",  
+        data: { recargarBtn: true, simNumber: simNumber, monto: montoRecarga },
+        success: function (data) {
+            if (data && data.success) {
+                alert("Recarga realizada con éxito.");
+            } else {
+                alert("Error al realizar la recarga: " + (data ? data.message : ''));
+            }
+        },         
+        error: function (xhr, status, error) {
+            console.error("Error en la solicitud AJAX:", status, error);
+            alert("Error al realizar la recarga. Por favor, intenta de nuevo.");
+        }        
+    });
+});
+
+// Función para calcular los días de recarga según el monto
+function calcularDiasRecarga(monto) {
+    switch (monto) {
+        case "10":
+            return 7;
+        case "20":
+            return 10;
+        case "30":
+            return 15;
+        case "50":
+            return 30;
+        default:
+            return 0;
+    }
+}
+
+// Función para obtener la fecha actual en formato YYYY-MM-DD
+function obtenerFechaActual() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    return yyyy + '-' + mm + '-' + dd;
+}
+
+// Función para sumar días a una fecha
+function sumarDias(fecha, dias) {
+    var nuevaFecha = new Date(fecha);
+    nuevaFecha.setDate(nuevaFecha.getDate() + dias);
+    var dd = String(nuevaFecha.getDate()).padStart(2, '0');
+    var mm = String(nuevaFecha.getMonth() + 1).padStart(2, '0');
+    var yyyy = nuevaFecha.getFullYear();
+    return yyyy + '-' + mm + '-' + dd;
+}

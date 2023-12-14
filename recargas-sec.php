@@ -1,5 +1,4 @@
 <?php
-// última versión 12 diciembre 1:30
 
 include ('config.php'); // Incluye el archivo de conexión
 
@@ -162,19 +161,25 @@ $conn->close();
             </div>
     
         </div>
-        <div style="margin-top: 20px; text-align: center;">
-                <h2>REGISTRAR RECARGA</h2>
-                <br>     
-                <span>Recargar <span>
-                <select id="monto" name="monto" style="margin-right: 10px; vertical-align: middle;">
-                        <option value="10">$10</option>
-                        <option value="20">$20 </option>
-                        <option value="30">$30 </option>
-                        <option value="50">$50 </option>
-                    </select>
+        
+        <div class="registro-recarga">
+            <h2>REGISTRAR RECARGA</h2>
+            <div>
+                <span>Recargar </span>
+                <select id="monto" name="monto">
+                    <option value="10">$10</option>
+                    <option value="20">$20</option>
+                    <option value="30">$30</option>
+                    <option value="50">$50</option>
+                </select>
                 <span>al</span>
-                <input type="text" id="numeroChipPlaceholder" value="" readonly disabled style="margin-left: 10px; vertical-align: middle;" />
+                <input type="text" id="numeroChipPlaceholder" value="" readonly disabled />
             </div>
+            <button id="recargarBtn" class="recargar-button">Recargar</button>
+        </div>
+
+
+
         <!-- Pop-up -->
         <div class="popup" id="popup">
             <div class="popup-content">
@@ -185,7 +190,6 @@ $conn->close();
                 <button class="cancel-button">Cancelar</button>
             </div>
         </div>
-
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
