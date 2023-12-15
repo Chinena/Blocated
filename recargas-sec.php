@@ -32,7 +32,7 @@ if ($_SESSION['rol'] == 'admin') {
   }
 }
 
-//Busqueda de Recargas
+// Busqueda de Recargas
 
 // Obtener el equipo desde la solicitud GET
 $equipo = isset($_GET['equipo']) ? $_GET['equipo'] : '';
@@ -53,28 +53,17 @@ $query = "SELECT
 
 $resultado = $conn->query($query);
 
-// Verificar si se obtuvieron resultados
-if ($resultado->num_rows > 0) {
-    $fila = $resultado->fetch_assoc();
-
-    // Si es una solicitud AJAX, enviar la respuesta como JSON
-    if (isset($_GET['ajax'])) {
-        header('Content-Type: application/json');
-        echo json_encode($fila);
-        exit;
-    } else {
-        // Si no es una solicitud AJAX, imprime los resultados para depuración
-        var_dump($fila);
-    }
-} else {
-    // Si no se encontraron resultados, devolver una respuesta JSON vacía
+// Verificar si es una solicitud AJAX
+if (isset($_GET['ajax'])) {
     header('Content-Type: application/json');
-    echo json_encode(null);
+    if ($resultado->num_rows > 0) {
+        $fila = $resultado->fetch_assoc();
+        echo json_encode($fila);
+    } else {
+        echo json_encode(null);
+    }
     exit;
 }
-
-// Cerrar la conexión a la base de datos
-$conn->close();
 
 ?>
 

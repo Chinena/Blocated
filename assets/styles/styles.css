@@ -31,6 +31,8 @@ h1 {
   text-align: left;
   font-family: 'Raleway', sans-serif;
   font-size: 20px;
+  font-weight: bold;
+
 }
 
 h2 {
@@ -578,6 +580,23 @@ fieldset {
   padding-right: 10%;
   margin-right: 0%;  
 }
+#mensaje-container {
+  clear: both;
+  margin-top: 10px;
+  width: 100%;
+  text-align: left;
+  white-space: nowrap; /* Evita el salto de línea */
+  margin-right: 70%; /* Ajusta según sea necesario para que coincida con el margen de #divTabla2 */
+
+
+}
+
+#mensaje {
+  display: inline-block;
+ 
+  font-weight: bold;
+
+}
 
 #divTabla2 {
   /*background-color: #F9F9F9;
@@ -588,7 +607,8 @@ fieldset {
   /* Ajusta el ancho según tus necesidades */
   float: right;
   /* Hace que el div flote hacia la izquierda */
-  margin-right: 35%;
+  margin-right: 25%; /* Ajusta según sea necesario */
+
 }
 
 table {
@@ -663,6 +683,8 @@ tbody tr:last-child td {
 .column2 {
   flex: 1;
   text-align: right;
+  margin-right: 5%; /* Ajusta según sea necesario */
+
 }
 
 /*Login*/
@@ -848,6 +870,7 @@ tbody tr:last-child td {
 .buscador{
 color: white;
 align-items: center;
+
 }
 
 .info-recargas {
@@ -860,7 +883,7 @@ align-items: center;
 .info-recargas {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 

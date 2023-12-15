@@ -31,7 +31,7 @@
         <main class="form-signin w-100 m-auto">
             <form action="./scripts/inicio-s.php" method="POST">
                 <h1 class="h1-login">Control de Recargas bLocated</h1>
-                <img src="assets/images/logo blocated.png" width="90" height="90" class="icon-login" alt="logo" draggable="false">
+                <img src="assets/images/logoblocated.jpeg" margin-right="50px" width="150" height="100" class="icon-login" alt="logo" draggable="false">
 
                 <div class="user-container">
                 <input type="usuario" id="floatingInput" name="usuario" /> 

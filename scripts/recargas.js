@@ -60,7 +60,11 @@ $(document).ready(function () {
             success: function (data) {
                 if (data !== null) {
                     $("#simNumber").val(data.sim_number);
-                    $("#active").val(data.active);
+                    if (parseInt(data.active, 10) === 1) {
+                        $("#active").val('SI');
+                    } else {
+                        $("#active").val('No');
+                    }
                     $("#fechaRecarga").val(data.FECHA_RECARGA);
                     $("#fechaCaducado").val(data.FECHA_CADUCADO);
                 } else {
@@ -111,7 +115,11 @@ $(document).ready(function () {
             success: function(data) {
                 if (data !== null) {
                     $("#simNumber").val(data.sim_number);
-                    $("#active").val(data.active);
+                    if (parseInt(data.active, 10) === 1) {
+                        $("#active").val('SI');
+                    } else {
+                        $("#active").val('No');
+                    }
                     $("#fechaRecarga").val(data.FECHA_RECARGA);
                     $("#fechaCaducado").val(data.FECHA_CADUCADO);
                     $("#numeroChipPlaceholder").val(data.sim_number);
