@@ -134,3 +134,35 @@ class TableCSVExporter {
     }
 
 }
+
+
+///Para actualizar la bd de recargas
+document.getElementById('btn-export').addEventListener('click', () => {
+    //console.log('csv');
+    $('#cargando').show();
+
+    fetch('scripts/csv-recargaMasiva.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then((response) => response.text())
+        .then((data) => {
+            console.log(data);
+            
+            setTimeout(() => {
+                $('#cargando').hide();
+                // Recargar la página después de ocultar el mensaje
+                location.reload();
+            }, 2000);
+        })
+        .catch((error) => {
+            console.error('Error en la solicitud:', error);
+        });
+});
+
+//Esconder el Spinner al cargar el documento
+$(document).ready(function () {
+    $('#cargando').hide();
+});

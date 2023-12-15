@@ -215,6 +215,9 @@ if ($_SESSION['rol'] == 'admin') {
       </table>
     </div>
     </div>-->
+    <div id="cargando" class="cargando">
+      <div class="spinner-grow text-info" role="status"></div>
+    </div>
   </section>
   
 
@@ -236,6 +239,7 @@ if ($_SESSION['rol'] == 'admin') {
       const csvBlob = new Blob([csvOutput], {type: "text/csv"});
 
       const blobUrl = URL.createObjectURL(csvBlob);
+      //console.log(blobUrl);
 
       const currentDate = new Date().toISOString().split('T')[0];
       const fileName = `Recarga-Masiva ${currentDate}.csv`
