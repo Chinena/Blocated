@@ -802,29 +802,59 @@ tbody tr:last-child td {
 
 
 /*Modulo Recargas*/
+
+
 .seccion-recargas {
-  margin-top: 150px;
+  margin-top: 100px;
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 0.3em;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 80%; /* Ajusta el valor según sea necesario */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px; /* Ajusta el valor según sea necesario */
+
 }
 
 .contenido-recargas {
-  margin-top: 50px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.container-recargas {
+  padding: 20px;
+  margin-bottom: 30px; /* Ajusta el valor según sea necesario */
+}
+
+.text-over-box a {
+  padding: 0 15px; /* Ajusta el valor según sea necesario */
+  display: inline-block; /* Para que el padding funcione correctamente */
+  vertical-align: middle; /* Alineación vertical al centro */
+  margin-top: 06px;
 }
 
 .text-over-box {
   margin-top: 30px;
   text-align: center;
   font-family: 'Poppins', sans-serif;
-  font-size: 20px;
+  font-size: 13px;
+  font-weight: 900;
 }
 
-.buscador,
+.buscador{
+color: white;
+align-items: center;
+}
+
 .info-recargas {
   width: 100%;
   max-width: 800px;
+  color: white;
+  
 }
 
 .info-recargas {
@@ -833,41 +863,43 @@ tbody tr:last-child td {
   margin-top: 20px;
 }
 
-.info-recargas .text-over-box {
-  width: 40%;
-}
+
 
 /* ancho específico para los elementos de info-recargas en pantallas más pequeñas */
 @media (max-width: 768px) {
   .info-recargas {
-    flex-direction: column;
+      flex-direction: column;
   }
 
   .info-recargas .text-over-box {
-    width: 100%;
+      width: 100%;
   }
 }
 
 .input-group {
-  display: flex;
   align-items: center;
 }
 
 .input-group input {
-  flex: 1;
+  align-items: center;
+  vertical-align: middle; /* Alineación vertical al centro */
 
 }
 
 .input-group button {
   margin-left: 10px;
-
 }
+
 .registro-recarga {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   margin-top: 20px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 900;
 }
 
 .registro-recarga h2 {
@@ -884,4 +916,42 @@ tbody tr:last-child td {
 
 #numeroChipPlaceholder {
   margin-left: 10px;
+}
+
+/* Estilos para el botón de buscar y recargar */
+.submit-button,
+.recargar-button {
+  background-color: #008CBA;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  
+}
+
+.recargar-button {
+  background-color: #4CAF50;
+}
+
+.submit-button:hover,
+.recargar-button:hover {
+  background-color: #005E7D;
+}
+
+/* Estilos para el popup */
+.popup-content {
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+  height: 30%;
+  position: relative;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.50), 4px 4px 6px rgba(0, 0, 0, 0.5);
 }

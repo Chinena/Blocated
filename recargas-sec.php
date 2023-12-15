@@ -112,9 +112,9 @@ $conn->close();
 
     </head>
     <body>
-        <!-- Barra de Navegacion -->
+       <!-- Barra de Navegacion -->
         <div class="navbar-logo header fixed-header">
-            <img src="assets/images/logo-fondoblanco.jpeg" layout="responsive" width="180" height="45" alt="Logo Ubicuo" class="mobirise-loader img-fondo" /> 
+            <img src="assets/images/ubicuologo.png" layout="responsive" width="180" height="45" alt="Logo Ubicuo" class="mobirise-loader img-fondo" /> 
             <nav>
                 <ul>
                     <li><a href="index.php">I N I C I O</a></li>
@@ -125,59 +125,60 @@ $conn->close();
             </nav>
         </div>
 
+        
         <div class="seccion-recargas">
-            <div class="contenido-recargas">
-                <div class="buscador" id="BuscadorFormulario">
-                    <div class="text-over-box">
-                        <a>Nombre del Equipo</a>
-                        <div class="input-group">
-                            <input type="text" id="equipo" autocomplete="off" />
-                            <button class="submit-button">Buscar</button>
+            <div class="container-recargas">
+                <div class="contenido-recargas">
+                    <div class="buscador" id="BuscadorFormulario">
+                        <div class="text-over-box">
+                            <a>Nombre del Equipo</a>
+                            <div class="input-group">
+                                <input type="text" id="equipo" autocomplete="off" />
+                                <button class="submit-button">Buscar</button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="info-recargas">
-                    <div class="text-over-box">
-                        <a>Chip</a>
-                        <input type="text" id="simNumber" value="" readonly disabled />
+                    <div class="info-recargas">
+                        <div class="text-over-box">
+                            <a>Chip</a>
+                            <input type="text" id="simNumber" value="" readonly disabled />
+                        </div>
+                        <div class="text-over-box">
+                            <a>Fecha de Recarga</a>
+                            <input type="date" id="fechaRecarga" value="" style="color: grey; text-align: center;" readonly disabled />
+                        </div>
+                        
                     </div>
-                    <div class="text-over-box">
-                        <a>Activo</a>
-                        <input type="text" id="active" value="" readonly disabled />
-                    </div>
-                </div>
 
-                <div class="info-recargas">
-                    <div class="text-over-box">
-                        <a>Fecha de Recarga</a>
-                        <input type="date" id="fechaRecarga" value="" style="color: grey; text-align: center;" readonly disabled />
+                    <div class="info-recargas">
+                        <div class="text-over-box">
+                            <a>Activo</a>
+                            <input type="text" id="active" value="" readonly disabled />
+                        </div>
+                        <div class="text-over-box">
+                            <a>Fecha de Caducidad</a>
+                            <input type="date" id="fechaCaducado" value="" style="color: grey; text-align: center;" readonly disabled />
+                        </div>
                     </div>
-                    <div class="text-over-box">
-                        <a>Fecha de Caducidad</a>
-                        <input type="date" id="fechaCaducado" value="" style="color: grey; text-align: center;" readonly disabled />
-                    </div>
-                </div>
+
+                    <div class="registro-recarga">
+                        <h2>Registrar Recarga</h2>
+                        <div>
+                            <span>Recargar </span>
+                            <select id="monto" name="monto">
+                                <option value="10">$10</option>
+                                <option value="20">$20</option>
+                                <option value="30">$30</option>
+                                <option value="50">$50</option>
+                            </select>
+                            <span>al</span>
+                            <input type="text" id="numeroChipPlaceholder" value="" readonly disabled />
+                        </div>
+                        <button id="recargarBtn" class="recargar-button">Recargar</button>
+                </div>       
             </div>
-    
         </div>
-        
-        <div class="registro-recarga">
-            <h2>REGISTRAR RECARGA</h2>
-            <div>
-                <span>Recargar </span>
-                <select id="monto" name="monto">
-                    <option value="10">$10</option>
-                    <option value="20">$20</option>
-                    <option value="30">$30</option>
-                    <option value="50">$50</option>
-                </select>
-                <span>al</span>
-                <input type="text" id="numeroChipPlaceholder" value="" readonly disabled />
-            </div>
-            <button id="recargarBtn" class="recargar-button">Recargar</button>
-        </div>
-
 
 
         <!-- Pop-up -->
