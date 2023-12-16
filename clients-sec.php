@@ -85,7 +85,7 @@ if ($_SESSION['rol'] == 'admin') {
                 <fieldset style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
                 <legend class="clientes">Buscar cliente por:</legend>
                 <div class="input-group" style="margin-top: 6px;">
-                    <span class="clientes" style="margin: 4px 10px;">Nombre o Razon Social: </span>
+                    <span class="clientes" style="margin: 4px 10px;">Nombre o Razón Social: </span>
                     <input type="text" id="searchClient" autocomplete="off" style="text-align: center; width:200px;">
                 </div>
                 <!-- 
@@ -129,7 +129,7 @@ if ($_SESSION['rol'] == 'admin') {
                             <input type="hidden" id="razon_social_hidden" name="razon_social_hidden">
 
                             <div class="input-group">
-                                <span>Razon Social: </span>
+                                <span>Nombre o Razón Social: </span>
                                 <input type="text" name="razon_social" id="razon_social" autocomplete="off" required />
                             </div>
                             <div class="input-group">
@@ -141,7 +141,7 @@ if ($_SESSION['rol'] == 'admin') {
                                 <input type="text" name="email_factura" id="email_factura" autocomplete="off" required />
                             </div>
                             <div class="input-group">
-                                <span>Telefono Oficina: </span>
+                                <span>Teléfono Oficina: </span>
                                 <input type="text" name="tel_Oficina" id="tel_Oficina" maxlength="10" autocomplete="off" />
                             </div>
                             <div class="input-group">
@@ -162,7 +162,7 @@ if ($_SESSION['rol'] == 'admin') {
                                 <input type="text" name="email_contacto" id="email_contacto" autocomplete="off" /><br>
                             </div>
                             <div class="input-group">
-                                <span>Telefono Contacto: </span>
+                                <span>Teléfono Contacto: </span>
                                 <input type="text" name="tel_Contacto" id="tel_Contacto" maxlength="10" autocomplete="off" required />
                             </div>
                         </div>
